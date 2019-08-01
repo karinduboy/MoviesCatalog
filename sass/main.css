@@ -1,1 +1,14 @@
-/* No CSS *//*# sourceMappingURL=main.css.map */
+body {
+  background-color: #F8F8F8;
+  margin: 0px;
+}
+body header nav .logo {
+  background-color: #081C24;
+  max-width: 15%;
+}
+body header nav div.searchInput img.searchIcon {
+  height: 3%;
+  width: 3%;
+}
+
+/*# sourceMappingURL=main.css.map */
