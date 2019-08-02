@@ -1,6 +1,7 @@
 body {
   background-color: #F8F8F8;
   margin: 0px;
+  font-family: "Roboto", sans-serif;
 }
 body header {
   width: 100%;
@@ -37,6 +38,13 @@ body header nav div.searchInput input {
   border-style: none;
   font-size: 16px;
   margin-left: 10px;
+}
+body nav ul.leftMenu {
+  background-color: white;
+}
+body nav ul.leftMenu li.menuOption {
+  list-style: none;
+  font-size: 14px;
 }
 body .frontImage .indexImg {
   width: 100%;
