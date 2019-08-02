@@ -23,7 +23,8 @@ body{
                 background-color: white;
                 padding: 20px 25px 20px 35px;
                 width: 100%;
-                
+                display: flex;
+                align-items: center;              
                 img.searchIcon{
                     width: 18px;
                     height: 18px;
@@ -34,6 +35,12 @@ body{
                     margin-left: 10px;
                 }
             }
+        }
+    }
+    .frontImage{
+        .indexImg{
+            width: 100%;
+            opacity: 0.5;
         }
     }
 }

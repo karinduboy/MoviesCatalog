@@ -26,6 +26,8 @@ body header nav div.searchInput {
   background-color: white;
   padding: 20px 25px 20px 35px;
   width: 100%;
+  display: flex;
+  align-items: center;
 }
 body header nav div.searchInput img.searchIcon {
   width: 18px;
@@ -35,6 +37,10 @@ body header nav div.searchInput input {
   border-style: none;
   font-size: 16px;
   margin-left: 10px;
+}
+body .frontImage .indexImg {
+  width: 100%;
+  opacity: 0.5;
 }
 
 /*# sourceMappingURL=main.css.map */
