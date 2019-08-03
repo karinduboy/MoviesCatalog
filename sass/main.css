@@ -1,79 +1,132 @@
+@import url(c:\Users\Karin Duboy\Documents\Personal\ada\TP3-FerKarin-Movies\css\reset.css);
 body {
   background-color: #F8F8F8;
   margin: 0px;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
+
 body header {
   width: 100%;
   height: 75px;
 }
-body header nav {
+
+body header .topHeader {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
-body header nav a.logoIndex {
+
+body header .topHeader a.logoIndex {
   background-color: #081C24;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 95px;
   height: 75px;
 }
-body header nav a.logoIndex img.logoImage {
+
+body header .topHeader a.logoIndex img.logoImage {
   width: 45px;
   height: 40px;
 }
-body header nav div.searchInput {
-  background-color: white;
+
+body header .topHeader div.searchBar {
+  background-color: #ffffff;
   padding-left: 35px;
   width: 100%;
   margin-left: 95px;
   height: 75px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: absolute;
 }
-body header nav div.searchInput img.searchIcon {
+
+body header .topHeader div.searchBar img.searchIcon {
   width: 18px;
   height: 18px;
+  color: rgba(8, 28, 36, 0.7);
 }
-body header nav div.searchInput input {
+
+body header .topHeader div.searchBar input {
   border-style: none;
   font-size: 16px;
   margin-left: 10px;
 }
+
 body nav.leftNav {
   display: block;
   max-width: 95px;
 }
+
 body nav.leftNav ul.leftMenu {
-  background-color: white;
+  background-color: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   padding: 0px;
   height: 100vh;
   margin: 0px 0px 0px 0px;
   text-align: center;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 body nav.leftNav ul.leftMenu li.menuOption {
   list-style: none;
   font-size: 11px;
   width: 100%;
   height: 95px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   border-bottom: 0.8px solid #F8F8F8;
 }
+
+body nav.leftNav ul.leftMenu li.menuOption a {
+  text-decoration: none;
+  color: rgba(8, 28, 36, 0.7);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+body nav.leftNav ul.leftMenu li.menuOption a :hover {
+  color: #081C24;
+}
+
 body nav.leftNav ul.leftMenu li.menuOption .leftMenuIcon {
   width: 20px;
   height: 20px;
 }
+
 body .frontImage .indexImg {
   width: 100%;
   opacity: 0.5;
 }
-
 /*# sourceMappingURL=main.css.map */
