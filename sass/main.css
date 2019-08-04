@@ -1,23 +1,66 @@
-@import url(c:\Users\Karin Duboy\Documents\Personal\ada\TP3-FerKarin-Movies\css\reset.css);
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after {
+  content: '';
+  content: none;
+}
+
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+svg.iconLib {
+  display: none;
+}
+
 body {
   background-color: #F8F8F8;
-  margin: 0px;
   font-family: 'Roboto', sans-serif;
 }
 
 body header {
   width: 100%;
   height: 75px;
+  position: relative;
 }
 
 body header .topHeader {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  display: block;
+  position: relative;
 }
 
 body header .topHeader a.logoIndex {
@@ -41,10 +84,10 @@ body header .topHeader a.logoIndex img.logoImage {
 }
 
 body header .topHeader div.searchBar {
+  position: fixed;
   background-color: #ffffff;
   padding-left: 35px;
   width: 100%;
-  margin-left: 95px;
   height: 75px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -52,13 +95,16 @@ body header .topHeader div.searchBar {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  position: absolute;
+  position: fixed;
+  top: 0;
+  left: 95px;
+  right: 0;
 }
 
-body header .topHeader div.searchBar img.searchIcon {
+body header .topHeader div.searchBar .searchIcon {
   width: 18px;
   height: 18px;
-  color: rgba(8, 28, 36, 0.7);
+  fill: rgba(8, 28, 36, 0.7);
 }
 
 body header .topHeader div.searchBar input {
@@ -69,7 +115,9 @@ body header .topHeader div.searchBar input {
 
 body nav.leftNav {
   display: block;
-  max-width: 95px;
+  width: 95px;
+  height: calc(100vh - 75px);
+  background-color: #ffffff;
 }
 
 body nav.leftNav ul.leftMenu {
@@ -77,13 +125,14 @@ body nav.leftNav ul.leftMenu {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: fixed;
+  left: 0;
+  top: 75px;
+  width: 95px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 0px;
-  height: 100vh;
-  margin: 0px 0px 0px 0px;
   text-align: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -95,12 +144,18 @@ body nav.leftNav ul.leftMenu li.menuOption {
   font-size: 11px;
   width: 100%;
   height: 95px;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
   border-bottom: 0.8px solid #F8F8F8;
 }
 
-body nav.leftNav ul.leftMenu li.menuOption a {
+body nav.leftNav ul.leftMenu li.menuOption :hover {
+  color: #081C24;
+}
+
+body nav.leftNav ul.leftMenu li.menuOption :hover .leftMenuIcon {
+  fill: #081C24;
+}
+
+body nav.leftNav ul.leftMenu li.menuOption a.menuLink {
   text-decoration: none;
   color: rgba(8, 28, 36, 0.7);
   display: -webkit-box;
@@ -116,13 +171,14 @@ body nav.leftNav ul.leftMenu li.menuOption a {
   height: 100%;
 }
 
-body nav.leftNav ul.leftMenu li.menuOption a :hover {
-  color: #081C24;
-}
-
 body nav.leftNav ul.leftMenu li.menuOption .leftMenuIcon {
   width: 20px;
   height: 20px;
+  fill: rgba(8, 28, 36, 0.7);
+}
+
+body .mainContainer {
+  width: calc(100vw - 95px);
 }
 
 body .frontImage .indexImg {
