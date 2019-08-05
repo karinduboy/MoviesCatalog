@@ -25,6 +25,7 @@ body{
             position: relative;
             // flex-direction: row;
             a.logoIndex{
+                position: fixed;
                 background-color:$darkBlue;
                 display: flex;
                 align-items: center;
@@ -56,8 +57,10 @@ body{
                 }
                 input{
                     border-style: none;
+                    outline: none;
                     font-size: 16px;
                     margin-left: 10px;
+                    width: 100%;
                 }
             }
         }
@@ -102,6 +105,7 @@ body{
                 .leftMenuIcon{
                     width: 20px;
                     height: 20px;
+                    margin-bottom: 10px;
                     fill: $trsDB;
                 }
             }

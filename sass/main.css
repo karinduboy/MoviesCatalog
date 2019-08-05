@@ -29,12 +29,12 @@ blockquote, q {
 }
 
 blockquote:before, blockquote:after {
-  content: '';
+  content: "";
   content: none;
 }
 
 q:before, q:after {
-  content: '';
+  content: "";
   content: none;
 }
 
@@ -49,96 +49,72 @@ svg.iconLib {
 
 body {
   background-color: #F8F8F8;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
-
 body header {
   width: 100%;
   height: 75px;
   position: relative;
 }
-
 body header .topHeader {
   display: block;
   position: relative;
 }
-
 body header .topHeader a.logoIndex {
+  position: fixed;
   background-color: #081C24;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   width: 95px;
   height: 75px;
 }
-
 body header .topHeader a.logoIndex img.logoImage {
   width: 45px;
   height: 40px;
 }
-
 body header .topHeader div.searchBar {
   position: fixed;
   background-color: #ffffff;
   padding-left: 35px;
   width: 100%;
   height: 75px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   position: fixed;
   top: 0;
   left: 95px;
   right: 0;
 }
-
 body header .topHeader div.searchBar .searchIcon {
   width: 18px;
   height: 18px;
   fill: rgba(8, 28, 36, 0.7);
 }
-
 body header .topHeader div.searchBar input {
   border-style: none;
+  outline: none;
   font-size: 16px;
   margin-left: 10px;
+  width: 100%;
 }
-
 body nav.leftNav {
   display: block;
   width: 95px;
   height: calc(100vh - 75px);
   background-color: #ffffff;
 }
-
 body nav.leftNav ul.leftMenu {
   background-color: #ffffff;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   position: fixed;
   left: 0;
   top: 75px;
   width: 95px;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   text-align: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
-
 body nav.leftNav ul.leftMenu li.menuOption {
   list-style: none;
   font-size: 11px;
@@ -146,43 +122,33 @@ body nav.leftNav ul.leftMenu li.menuOption {
   height: 95px;
   border-bottom: 0.8px solid #F8F8F8;
 }
-
 body nav.leftNav ul.leftMenu li.menuOption :hover {
   color: #081C24;
 }
-
 body nav.leftNav ul.leftMenu li.menuOption :hover .leftMenuIcon {
   fill: #081C24;
 }
-
 body nav.leftNav ul.leftMenu li.menuOption a.menuLink {
   text-decoration: none;
   color: rgba(8, 28, 36, 0.7);
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
 }
-
 body nav.leftNav ul.leftMenu li.menuOption .leftMenuIcon {
   width: 20px;
   height: 20px;
+  margin-bottom: 10px;
   fill: rgba(8, 28, 36, 0.7);
 }
-
 body .mainContainer {
   width: calc(100vw - 95px);
 }
-
 body .frontImage .indexImg {
   width: 100%;
   opacity: 0.5;
 }
+
 /*# sourceMappingURL=main.css.map */
