@@ -80,9 +80,19 @@ body header .topHeader a.logoIndex {
   height: 75px;
 }
 
-body header .topHeader a.logoIndex img.logoImage {
+body header .topHeader a.logoIndex .logoImage {
   width: 45px;
   height: 40px;
+}
+
+body header .topHeader a.logoIndex .logoImage :hover {
+  width: 50px;
+  height: 45px;
+  fill: #BC3B69;
+  -webkit-transition: -webkit-transform .5s ease;
+  transition: -webkit-transform .5s ease;
+  transition: transform .5s ease;
+  transition: transform .5s ease, -webkit-transform .5s ease;
 }
 
 body header .topHeader div.searchBar {

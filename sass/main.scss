@@ -38,9 +38,16 @@ body{
                 width: 95px;
                 height: 75px;
                 // object-position: center center;
-                img.logoImage{
+                .logoImage{
                     width: 45px;
                     height: 40px;
+                    //color: $menuBg;
+                    :hover{
+                        width: 50px;
+                        height: 45px;
+                        fill: #BC3B69;
+                        transition: transform .5s ease;
+                    }
                 }
             }
             div.searchBar{
@@ -92,11 +99,11 @@ body{
                 // flex-wrap: wrap;
                 border-bottom: 0.8px solid $bgColor;
                 :hover{
-                        color: $darkBlue;
-                        .leftMenuIcon{
-                            fill: $darkBlue;
-                        }   
-                    }
+                    color: $darkBlue;
+                    .leftMenuIcon{
+                        fill: $darkBlue;
+                    }   
+                }
                 a.menuLink{
                     text-decoration: none;
                     color: rgba(8,28,36,0.7);
