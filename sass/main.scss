@@ -74,6 +74,20 @@ body{
                     width: 100%;
                 }
             }
+            .responsiveMenu{
+                display: block;
+                float:right;
+                position: fixed;
+                width: 55px;
+                height: 50px;
+                top: 0;
+                right: 0;
+                .responsiveMenuIcon{
+                    float: right;
+                    color: $bgColor;
+
+                }
+            }
         }
     }
     nav.leftNav{

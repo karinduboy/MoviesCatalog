@@ -126,6 +126,21 @@ body header .topHeader div.searchBar input {
   width: 100%;
 }
 
+body header .topHeader .responsiveMenu {
+  display: block;
+  float: right;
+  position: fixed;
+  width: 55px;
+  height: 50px;
+  top: 0;
+  right: 0;
+}
+
+body header .topHeader .responsiveMenu .responsiveMenuIcon {
+  float: right;
+  color: #F8F8F8;
+}
+
 body nav.leftNav {
   display: block;
   width: 95px;
