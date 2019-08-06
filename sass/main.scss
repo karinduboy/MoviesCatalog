@@ -7,6 +7,10 @@ $darkBlue: #081C24;
 $bgColor: #F8F8F8;
 $menuBg:#ffffff;
 
+//breakpoints
+$tablet: 750px;
+$mobile: 420px;
+
 // escondemos los svg que agregamos inline (se agregan así porque son pocos y están optimizados)
 svg.iconLib{
     display: none;
@@ -24,6 +28,7 @@ body{
             display: block;
             position: relative;
             // flex-direction: row;
+            background-color: $menuBg;
             a.logoIndex{
                 position: fixed;
                 background-color:$darkBlue;
@@ -46,7 +51,6 @@ body{
                 height: 75px;
                 display: flex;
                 align-items: center;       
-                position: fixed;
                 top: 0;
                 left: 95px; 
                 right: 0;       
@@ -117,7 +121,7 @@ body{
     .frontImage{
         .indexImg{
             width: 100%;
-            opacity: 0.5;
+            opacity: 0.3;
         }
     }
 }
