@@ -132,6 +132,13 @@ body header .topHeader div.searchBar .searchIcon {
   fill: rgba(8, 28, 36, 0.7);
 }
 
+@media only screen and (max-width: 750px) {
+  body header .topHeader div.searchBar .searchIcon {
+    width: 15px;
+    height: 15px;
+  }
+}
+
 body header .topHeader div.searchBar input {
   border-style: none;
   outline: none;
@@ -142,28 +149,32 @@ body header .topHeader div.searchBar input {
 
 @media only screen and (max-width: 750px) {
   body header .topHeader .responsiveMenu {
-    display: block;
     float: right;
     position: relative;
-    z-index: 10;
     width: 55px;
     height: 50px;
     top: 0;
     right: 0;
-    border-left: 0.8px solid #F8F8F8;
+    border-left: 1px solid #F8F8F8;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    text-align: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    justify-items: center;
   }
 }
 
-body header .topHeader .responsiveMenu .responsiveMenuIcon i.fa-bars {
-  color: rgba(8, 28, 36, 0.7);
+body header .topHeader .responsiveMenu div.responsiveMenuIcon {
   width: 100%;
-  height: 100%;
-  line-height: 10px;
-  text-align: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  justify-items: center;
+}
+
+body header .topHeader .responsiveMenu div.responsiveMenuIcon i.fa-bars {
+  color: rgba(8, 28, 36, 0.7);
+  font-size: 180%;
+  -webkit-text-stroke: 3px white;
 }
 
 body nav.leftNav {

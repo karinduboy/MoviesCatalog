@@ -45,7 +45,6 @@ body{
                 .logoImage{
                     width: 45px;
                     height: 40px;
-                    //color: $menuBg;
                     :hover{
                         width: 50px;
                         height: 45px;
@@ -73,6 +72,10 @@ body{
                     width: 18px;
                     height: 18px;;
                     fill: $trsDB;
+                    @media only screen and (max-width: $tablet){
+                        width: 15px;
+                        height: 15px;
+                    }
                 }
                 input{
                     border-style: none;
@@ -84,25 +87,24 @@ body{
             }
             .responsiveMenu{
                 @media only screen and (max-width: $tablet) {
-                    display: block;
                     float:right;
                     position: relative;
-                    z-index: 10;
                     width: 55px;
                     height: 50px;
                     top: 0;
                     right: 0;
-                    border-left: 0.8px solid $bgColor;
+                    border-left: 1px solid $bgColor;
+                    display: flex;
+                    text-align: center;
+                    align-items: center;
+                    justify-items: center;
                 }
-                .responsiveMenuIcon{
+                div.responsiveMenuIcon{
+                    width: 100%;
                     i.fa-bars{
                         color: $trsDB;
-                        width: 100%;
-                        height: 100%;
-                        line-height: 10px;
-                        text-align: center;
-                        align-items: center;
-                        justify-items: center;
+                        font-size: 180%;
+                        -webkit-text-stroke: 3px white;        
                     }
                 }
             }

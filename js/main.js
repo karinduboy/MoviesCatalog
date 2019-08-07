@@ -1,1 +1,4 @@
 //menú hamburguesa
+const responsiveMenu = () => {
+    
+}
