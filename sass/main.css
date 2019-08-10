@@ -50,44 +50,15 @@ svg.iconLib {
 body {
   background-color: #F8F8F8;
   font-family: 'Roboto', sans-serif;
-}
-
-body header {
-  width: 100%;
-  height: 75px;
+  color: #081C24;
   position: relative;
 }
 
-body header .topHeader {
-  display: block;
-  position: relative;
-}
-
-body header .topHeader a.logoIndex {
-  background-color: #081C24;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 95px;
-  height: 75px;
-}
-
-body header .topHeader a.logoIndex img.logoImage {
-  width: 45px;
-  height: 40px;
-}
-
-body header .topHeader div.searchBar {
+body div.searchBar {
   position: fixed;
   background-color: #ffffff;
   padding-left: 35px;
-  width: 100%;
+  width: calc(100vw - 95px);
   height: 75px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -101,13 +72,13 @@ body header .topHeader div.searchBar {
   right: 0;
 }
 
-body header .topHeader div.searchBar .searchIcon {
+body div.searchBar .searchIcon {
   width: 18px;
   height: 18px;
   fill: rgba(8, 28, 36, 0.7);
 }
 
-body header .topHeader div.searchBar input {
+body div.searchBar input {
   border-style: none;
   font-size: 16px;
   margin-left: 10px;
@@ -115,9 +86,33 @@ body header .topHeader div.searchBar input {
 
 body nav.leftNav {
   display: block;
+  float: left;
   width: 95px;
-  height: calc(100vh - 75px);
+  height: 100vw;
   background-color: #ffffff;
+}
+
+body nav.leftNav a.logoIndex {
+  background-color: #081C24;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 95px;
+  height: 75px;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+body nav.leftNav a.logoIndex img.logoImage {
+  width: 45px;
+  height: 40px;
 }
 
 body nav.leftNav ul.leftMenu {
@@ -179,10 +174,26 @@ body nav.leftNav ul.leftMenu li.menuOption .leftMenuIcon {
 
 body .mainContainer {
   width: calc(100vw - 95px);
+  float: right;
 }
 
-body .frontImage .indexImg {
+body .mainContainer .frontImage {
   width: 100%;
-  opacity: 0.5;
+  height: 30vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  overflow: hidden;
+}
+
+body .mainContainer .frontImage img.indexImg {
+  width: 100%;
+  height: auto;
+}
+
+body .mainContainer .frontImage H1 {
+  font-size: 30px;
+  font-weight: bold;
 }
 /*# sourceMappingURL=main.css.map */
