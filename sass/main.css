@@ -70,6 +70,7 @@ body div.searchBar {
   top: 0;
   left: 95px;
   right: 0;
+  z-index: 15;
 }
 
 body div.searchBar .searchIcon {
@@ -90,6 +91,7 @@ body nav.leftNav {
   width: 95px;
   height: 100vw;
   background-color: #ffffff;
+  z-index: 10;
 }
 
 body nav.leftNav a.logoIndex {
@@ -132,6 +134,7 @@ body nav.leftNav ul.leftMenu {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  z-index: 10;
 }
 
 body nav.leftNav ul.leftMenu li.menuOption {
@@ -169,31 +172,52 @@ body nav.leftNav ul.leftMenu li.menuOption a.menuLink {
 body nav.leftNav ul.leftMenu li.menuOption .leftMenuIcon {
   width: 20px;
   height: 20px;
+  margin-bottom: 10px;
   fill: rgba(8, 28, 36, 0.7);
 }
 
 body .mainContainer {
   width: calc(100vw - 95px);
-  float: right;
+  padding: 75px 0 0;
+  margin-left: 95px;
+  position: relative;
 }
 
 body .mainContainer .frontImage {
   width: 100%;
-  height: 30vh;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center;
-     object-position: center;
-  overflow: hidden;
+  height: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  position: relative;
 }
 
 body .mainContainer .frontImage img.indexImg {
+  position: absolute;
+  top: -100px;
+  left: 0;
   width: 100%;
-  height: auto;
+  opacity: 0.3;
 }
 
-body .mainContainer .frontImage H1 {
-  font-size: 30px;
+body .mainContainer .frontImage .pageTitle {
+  font-size: 48px;
   font-weight: bold;
+  font-family: 'Righteous', cursive;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 /*# sourceMappingURL=main.css.map */

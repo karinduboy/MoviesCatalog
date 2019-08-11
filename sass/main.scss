@@ -34,7 +34,8 @@ body{
             position: fixed;
             top: 0;
             left: 95px; 
-            right: 0;       
+            right: 0;
+            z-index: 15;
             .searchIcon{
                 width: 18px;
                 height: 18px;;
@@ -82,6 +83,7 @@ body{
             flex-direction: column;
             text-align: center;
             align-items: center;
+            z-index: 10;
             li.menuOption{
                 list-style: none;
                 font-size: 11px;
@@ -107,6 +109,7 @@ body{
                 .leftMenuIcon{
                     width: 20px;
                     height: 20px;
+                    margin-bottom: 10px;
                     fill: $trsDB;
                 }
             }
@@ -114,25 +117,36 @@ body{
     }
     .mainContainer{
         width: calc(100vw - 95px);
-        // position: relative;
-        float: right;
-        // right: 0;
+        padding: 75px 0 0;
+        margin-left: 95px;
+        position: relative;
         .frontImage{
             width: 100%;
-            height: 30vh;
-            object-fit: cover;
-            object-position: center;
-            overflow: hidden;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            position: relative;
             img.indexImg{
+                position: absolute;
+                top: -100px;
+                left: 0;
                 width: 100%;
-                height: auto;
-                // opacity: 0.5;
+                opacity: 0.3;
             }
-            H1{
-                font-size: 30px;
+            .pageTitle{
+                font-size: 48px;
                 font-weight: bold;
+                font-family: 'Righteous', cursive;
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                transform: translate(-50%, -50%);
             }
         }
-
     }
 }
