@@ -58,6 +58,12 @@ body header {
   position: relative;
 }
 
+@media only screen and (max-width: 750px) {
+  body header {
+    height: 50px;
+  }
+}
+
 body header .topHeader {
   display: block;
   position: relative;
@@ -95,11 +101,17 @@ body header .topHeader a.logoIndex .logoImage {
 }
 
 body header .topHeader a.logoIndex .logoImage :hover {
-  width: 50px;
-  height: 45px;
   fill: #BC3B69;
   -webkit-transition: all 0.8s ease;
   transition: all 0.8s ease;
+}
+
+@media only screen and (max-width: 750px) {
+  body header .topHeader a.logoIndex .logoImage {
+    width: 40px;
+    height: 40px;
+    margin: auto;
+  }
 }
 
 body header .topHeader div.searchBar {
@@ -123,6 +135,7 @@ body header .topHeader div.searchBar {
   body header .topHeader div.searchBar {
     height: 50px;
     left: 55px;
+    border-bottom: 2px solid #F8F8F8;
   }
 }
 
@@ -150,7 +163,7 @@ body header .topHeader div.searchBar input {
 @media only screen and (max-width: 750px) {
   body header .topHeader .responsiveMenu {
     float: right;
-    position: relative;
+    position: fixed;
     width: 55px;
     height: 50px;
     top: 0;
@@ -184,6 +197,15 @@ body nav.leftNav {
   background-color: #ffffff;
 }
 
+@media only screen and (max-width: 750px) {
+  body nav.leftNav {
+    width: 100%;
+    height: calc(100vh - 50px);
+    margin-top: 0px;
+    background-color: rgba(255, 255, 255, 0.98);
+  }
+}
+
 body nav.leftNav ul.leftMenu {
   background-color: #ffffff;
   display: -webkit-box;
@@ -201,6 +223,18 @@ body nav.leftNav ul.leftMenu {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 750px) {
+  body nav.leftNav ul.leftMenu {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    width: 100%;
+  }
 }
 
 body nav.leftNav ul.leftMenu li.menuOption {
@@ -219,6 +253,14 @@ body nav.leftNav ul.leftMenu li.menuOption :hover .leftMenuIcon {
   fill: #081C24;
 }
 
+@media only screen and (max-width: 750px) {
+  body nav.leftNav ul.leftMenu li.menuOption {
+    text-align: center;
+    width: 50%;
+    border-bottom: 1.5px solid #f8f8f8;
+  }
+}
+
 body nav.leftNav ul.leftMenu li.menuOption a.menuLink {
   text-decoration: none;
   color: #081C24;
@@ -233,6 +275,12 @@ body nav.leftNav ul.leftMenu li.menuOption a.menuLink {
           align-items: center;
   width: 100%;
   height: 100%;
+}
+
+@media only screen and (max-width: 750px) {
+  body nav.leftNav ul.leftMenu li.menuOption a.menuLink {
+    border-left: 1.5px solid #f8f8f8;
+  }
 }
 
 body nav.leftNav ul.leftMenu li.menuOption .leftMenuIcon {
