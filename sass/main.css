@@ -187,7 +187,7 @@ body header .topHeader .responsiveMenu div.responsiveMenuIcon {
 body header .topHeader .responsiveMenu div.responsiveMenuIcon i.fa-bars {
   color: rgba(8, 28, 36, 0.7);
   font-size: 180%;
-  -webkit-text-stroke: 3px white;
+  -webkit-text-stroke: 2px white;
 }
 
 body nav.leftNav {
@@ -195,6 +195,11 @@ body nav.leftNav {
   width: 95px;
   height: calc(100vh - 75px);
   background-color: #ffffff;
+}
+
+body nav.leftNav.open {
+  -webkit-transform: translate(-100vw);
+          transform: translate(-100vw);
 }
 
 @media only screen and (max-width: 750px) {

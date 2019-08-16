@@ -114,7 +114,7 @@ body{
                     i.fa-bars{
                         color: $trsDB;
                         font-size: 180%;
-                        -webkit-text-stroke: 3px white;        
+                        -webkit-text-stroke: 2px white;        
                     }
                 }
             }
@@ -125,11 +125,14 @@ body{
         width: 95px;
         height: calc(100vh - 75px);
         background-color: $menuBg;
+        &.open{
+            transform: translate(-100vw)
+        }
         @media only screen and (max-width: $tablet) {
             width: 100%;
             height: calc(100vh - 50px);
             margin-top: 0px;
-            background-color: hsla(0,0%,100%,.98);
+            background-color: hsla(0,0%,100%,.98); 
         }
         ul.leftMenu{
             background-color:$menuBg;
