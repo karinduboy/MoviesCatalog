@@ -216,7 +216,6 @@ body nav.leftNav ul.leftMenu {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  position: fixed;
   left: 0;
   top: 75px;
   width: 95px;

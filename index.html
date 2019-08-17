@@ -10,7 +10,7 @@
     <link href="css/transformicons.css" rel="stylesheet" type="text/css" media="screen">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <script src="js/transformicons.js" type="text/javascript"></script>
-    <script type="text/javascript" >transformicons.add("tcon")</script>
+    
     <script src="js/main.js" type="text/javascript"></script>
     <title>Ada Movies</title>
 </head>
@@ -46,14 +46,14 @@
                 <svg class="searchIcon"><use href="#iconSearch"/></svg>
                 <input type="search" placeholder="Search for a movie...">
             </div>
-            <button type="button" class="tcon tcon-menu--xcross" aria-label="toggle menu">
-                <span class="tcon-menu__lines" aria-hidden="true"></span>
-                <span class="tcon-visuallyhidden">toggle menu</span>
-            </button>
             <a href="#" class ="responsiveMenu" id="responsiveMenu" onclick="toggleMenu()">
-                <div class="responsiveMenuIcon">
+                <button type="button" class="tcon tcon-menu--xcross" aria-label="toggle menu">
+                    <span class="tcon-menu__lines" aria-hidden="true"></span>
+                    <span class="tcon-visuallyhidden">toggle menu</span>
+                </button>
+                <!--<div class="responsiveMenuIcon">
                     <i class="fas fa-bars"></i>
-                </div>
+                </div>-->
             </a>
         </div>
     </header>
@@ -104,5 +104,6 @@
 
         </div>
     </div>
+    <script type="text/javascript" >transformicons.add(".tcon")</script>
 </body>
 </html>

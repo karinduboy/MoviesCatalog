@@ -1,13 +1,13 @@
 //menú hamburguesa
-/*const addIcons = () => {
+const addIcons = () => {
     transformicons.add(".tcon")
 }
 
-addIcons()
+
 
 (function(){
     transformicons.add(".tcon")
-})*/
+})
 
 const toggleMenu = () => {
     let menu = document.getElementById("responsiveMenu")

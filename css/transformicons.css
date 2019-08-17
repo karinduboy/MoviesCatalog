@@ -34,7 +34,7 @@
 
 .tcon-menu__lines {
   display: inline-block;
-  height: 5.71429px;
+  height: 2px;
   width: 40px;
   border-radius: 2.85714px;
   -webkit-transition: 0.3s;
@@ -43,7 +43,7 @@
   position: relative; }
   .tcon-menu__lines::before, .tcon-menu__lines::after {
     display: inline-block;
-    height: 5.71429px;
+    height: 2px;
     width: 40px;
     border-radius: 2.85714px;
     -webkit-transition: 0.3s;
@@ -106,14 +106,14 @@
     width: auto; }
 
 .tcon-menu--xcross {
-  width: auto; }
+  width: 100%; }
   .tcon-menu--xcross.tcon-transform .tcon-menu__lines {
     background: transparent; }
     .tcon-menu--xcross.tcon-transform .tcon-menu__lines::before, .tcon-menu--xcross.tcon-transform .tcon-menu__lines::after {
       -webkit-transform-origin: 50% 50%;
       transform-origin: 50% 50%;
       top: 0;
-      width: 40px; }
+      width: 30px; }
     .tcon-menu--xcross.tcon-transform .tcon-menu__lines::before {
       -webkit-transform: rotate3d(0, 0, 1, 45deg);
       transform: rotate3d(0, 0, 1, 45deg); }

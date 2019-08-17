@@ -30,7 +30,6 @@ body{
         .topHeader{
             display: block;
             position: relative;
-            // flex-direction: row;
             background-color: $menuBg;
             a.logoIndex{
                 position: fixed;
@@ -125,6 +124,7 @@ body{
         width: 95px;
         height: calc(100vh - 75px);
         background-color: $menuBg;
+        //position: fixed;
         &.open{
             transform: translate(-100vw)
         }
@@ -137,7 +137,6 @@ body{
         ul.leftMenu{
             background-color:$menuBg;
             display: flex;
-            position: fixed;
             left: 0;
             top: 75px;
             width: 95px;
