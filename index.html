@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="sass/main.css" rel="stylesheet" type="text/css" media="screen">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
     <link rel='icon' href="assets2/favicon.ico" type="image/x-icon">
     <link href="css/transformicons.css" rel="stylesheet" type="text/css" media="screen">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -38,9 +39,6 @@
         <div class="topHeader">
             <a class="logoIndex" href="#">
                 <svg class="logoImage"><use href="#logo"></svg>
-                <!--
-                <svg class="logoImage"><path d="m 33,65.3 c -0.1,0 -0.1,0 -0.2,0 l -16.3,0 C 9.7,65.2 4.1,59.9 3.7,53.2 l 0,-0.2 0,-1.6 C 3.6,36 13.7,16.5 22,10.7 26.3,7.7 31.4,7.5 36.5,10.1 46.5,15.4 54,30.2 54,40 c 0,6.2 -2.9,10.6 -7.9,12.6 0,2.5 -0.8,4.9 -2.2,7.1 -2.4,3.5 -6.5,5.6 -10.9,5.6 z m -0.2,-5.6 c 2.6,0 5,-1.2 6.4,-3.2 0.6,-0.8 1,-1.8 1.1,-2.7 -0.3,0 -0.6,0 -1,0 l -15,0 c -1.5,0 -2.5,-0.3 -2.7,-0.3 -2.1,-0.6 -3.9,-1.9 -4.9,-3.8 -0.9,-1.7 -1.1,-3.7 -0.5,-5.6 0.1,-0.3 0.2,-0.6 0.3,-0.8 L 23,28.7 c 1.3,-3 4.2,-4.9 7.5,-4.9 3.3,0 6.3,1.7 7.7,4.7 l 0.1,0.3 6.6,18.2 c 3.5,-1.9 3.5,-5.5 3.5,-7 0,-8.7 -7.2,-21 -14.5,-24.8 -3.2,-1.7 -6,-1.6 -8.6,0.2 -6.3,4.4 -16,21.8 -16,36.1 l 0,1.5 c 0.3,3.7 3.5,6.7 7.2,6.7 l 16.3,0 z M 23.2,48 c 0,0 0.5,0.1 1.2,0.1 l 14.9,0 L 33,30.8 c -0.7,-1.3 -2,-1.4 -2.4,-1.3 -0.4,0 -1.8,0.1 -2.4,1.5 l -6.4,14.6 c 0,0.1 -0.1,0.2 -0.1,0.3 -0.1,0.4 -0.1,0.8 0.1,1.2 0.3,0.4 0.8,0.7 1.4,0.9 l 0,0 z"></svg>
-                -->
             </a>
             <div class="searchBar">
                 <svg class="searchIcon"><use href="#iconSearch"/></svg>
@@ -51,9 +49,6 @@
                     <span class="tcon-menu__lines" aria-hidden="true"></span>
                     <span class="tcon-visuallyhidden">toggle menu</span>
                 </button>
-                <!--<div class="responsiveMenuIcon">
-                    <i class="fas fa-bars"></i>
-                </div>-->
             </a>
         </div>
     </header>
@@ -93,18 +88,78 @@
                 </a>
             </li>
         </ul>
-    </nav><!-- 
+    </nav>
     <div class="mainContainer">
         <div class="frontImage">
             <img class="indexImg" src="assets2/batman.jpg">
-            <p class="pageTitle">THE MOVIE DB APP</p>
+            <h1 class="pageTitle">THE MOVIE DB APP</h1>
         </div>
-    
-        <div class="movies">
+        <div class="resultsContainer">
+            <section class="sectionContainer">
+                <div class="sectionTopLine">
+                    <h2 class="sectionTitle topLine">popular movies</h2>
+                    <a class="viewAllLink topLine" href="#">View All...</a>
+                </div>
+                <div id="popularResults" class="firstTitles">
+                    <!-- <div class="firstRow"> -->
+                        <div class="titleContainer">
+                            <div class="titlePoster">
+                            </div>
+                            <p class="titleName">Title 1</p>
+                        </div>
+                        <div class="titleContainer">
+                            <div class="titlePoster">
+                            </div>
+                            <p class="titleName">Title 2</p>
+                        </div>
+                        <div class="titleContainer">
+                            <div class="titlePoster">
+                            </div>
+                            <p class="titleName">Title 3</p>
+                        </div>
+                        <div class="titleContainer">
+                            <div class="titlePoster">
+                            </div>
+                            <p class="titleName">Title 4</p>
+                        </div>
+                        <div class="titleContainer">
+                            <div class="titlePoster">
+                            </div>
+                            <p class="titleName">Title 5</p>
+                        </div>
+                    <!-- </div> -->
+                    <!-- <div class="secondRow"> -->
+                        <!-- <div class="titleContainer">
+                            <div class="titlePoster">
+                            </div>
+                            <p class="titleName"></p>
+                        </div>
+                        <div class="titleContainer">
+                            <div class="titlePoster">
+                            </div>
+                            <p class="titleName"></p>
+                        </div>
+                        <div class="titleContainer">
+                            <div class="titlePoster">
+                            </div>
+                            <p class="titleName"></p>
+                        </div>
+                        <div class="titleContainer">
+                            <div class="titlePoster">
+                            </div>
+                            <p class="titleName"></p>
+                        </div>
+                        <div class="titleContainer">
+                            <div class="titlePoster">
+                            </div>
+                            <p class="titleName"></p>
+                        </div> -->
+                    <!-- </div> -->
+                </div>
+            </section>
 
         </div>
     </div>
-    -->
     <script type="text/javascript" >transformicons.add(".tcon")</script>
 </body>
 </html>

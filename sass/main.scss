@@ -6,6 +6,7 @@ $trsDB: rgba(8,28,36,0.7);
 $darkBlue: #081C24;
 $bgColor: #F8F8F8;
 $menuBg:#ffffff;
+$fS: 14px;
 
 //breakpoints
 $tablet: 750px;
@@ -17,9 +18,16 @@ svg.iconLib{
 }
 
 // comenzamos con los estilos de nuestra aplicacion
+*{
+    box-sizing: border-box;
+    color: $trsDB;
+}
 body{
     background-color:$bgColor;
     font-family: 'Roboto', sans-serif;
+    font-size: $fS;
+    color: $darkBlue;
+    position: relative;
     header{
         width:100%;
         height: 75px;
@@ -123,8 +131,10 @@ body{
     }
     nav.leftNav{
         display: block;
+        position: fixed;
+        float: left;
         width: 95px;
-        height: calc(100vh - 75px);
+        height: 100vh;
         background-color: $menuBg;
         float: left;
         position: fixed;
@@ -203,16 +213,84 @@ body{
         }
     }
     .mainContainer{
-        width: calc(100vw - 95px);
-    }
-    .frontImage{
-        .indexImg{
+        width: calc(100% - 95px);
+        //padding: 75px 0 0 0;
+        margin-left: 95px;
+        position: relative;
+        .frontImage{
             width: 100%;
-            opacity: 0.3;
+            height: 60vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            img.indexImg{
+                position: absolute;
+                top: -100px;
+                left: 0;
+                width: 100%;
+                opacity: 0.3;
+            }
+            .pageTitle{
+                font-size: 48px;
+                font-weight: bold;
+                font-family: 'Righteous', cursive;
+                color: $darkBlue;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+        .resultsContainer{
+            padding: 0 5%;
+            margin: 5% 0;
+            width: 100%;
+            .sectionContainer{
+                .sectionTopLine{
+                    display: flex;
+                    justify-content: space-between;
+                    .topLine{
+                        display: inline-block;
+                    }
+                    .sectionTitle{
+                        font-size: 1.4*$fS;
+                        text-transform: capitalize;
+                        font-weight: 100;
+                    }
+                    .viewAllLink{
+                        font-size: 0.9*$fS;
+                        text-decoration: none;
+                    }
+                }
+                .firstTitles{
+                    display: grid;
+                    // grid-gap: 5%;
+                    justify-content: space-between;
+                    grid-template-columns: auto auto auto auto auto;
+                    padding: 3% 0;
+                    .titleContainer{
+                        padding: 0 0 2% 0;
+                        max-width: 200px;
+                        max-height: 300px;
+                        .titlePoster{
+                            background-color: #444444;
+                            width: 100%;
+                            max-width: 200px;
+                            max-height: 300px;
+                            min-width: 200px;
+                            min-height: 300px;
+                            height: 95%;
+                        }
+                        .titleName{
+                            padding: 10% 0 0 0;
+                            color: $trsDB;
+                        }
+                    }   
+                }
+            }
         }
     }
-}
-
-.openLeftNav{
-    display: none;
 }
