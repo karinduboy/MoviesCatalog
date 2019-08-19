@@ -1,16 +1,7 @@
 //menú hamburguesa
-const addIcons = () => {
-    transformicons.add(".tcon")
-}
-
-
-
-(function(){
-    transformicons.add(".tcon")
-})
-
 const toggleMenu = () => {
-    let menu = document.getElementById("responsiveMenu")
-        menu.classList.toggle("open")
-    
+
+    let leftNav = document.getElementById("leftNav")
+        leftNav.classList.toggle("openLeftNav")
+
 }
