@@ -6,6 +6,7 @@ $trsDB: rgba(8,28,36,0.7);
 $darkBlue: #081C24;
 $bgColor: #F8F8F8;
 $menuBg:#ffffff;
+$ada:#BC3B69;
 $fS: 14px;
 
 //breakpoints
@@ -334,6 +335,89 @@ body{
                             color: $trsDB;
                         }
                     }   
+                }
+            }
+        }
+    }
+    .modal{
+        width: 100%;
+        top:0;
+        left: 0;
+        position:fixed;
+        background-color: rgba(8 ,28 ,36 , 0.9);
+        z-index: 105;
+        height: 100vh;
+        .modalContainer{
+            width: 65%;
+            height: 80%;
+            position: relative;
+            z-index: 106;
+            background-color: white;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            .topModal{
+                height: 45%;
+                background-color: grey;
+                position: relative;
+                .backImage{
+                }
+                .closeModal{
+                    width: 40px;
+                    height: 40px;
+                    background-color: $ada;
+                    font-size: 40px;
+                    -webkit-text-stroke: 4.5px $ada;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                }
+                .modalMovieTitle{
+                    position: absolute;
+                    top: 50%;
+                    right: 25%;
+                    p{
+                        font-size: 30px;
+                        color: $ada;
+                        margin-bottom: 1%;
+                    }
+                    span{
+                        color: $menuBg;
+                        font-size: 19px;
+                    }
+                }
+            }
+            .modalPoster{
+                height: 305px;
+                position: absolute;
+                top: 15%;
+                //bottom: 50%;
+                left: 5%;
+            }
+            .bottomModal{
+                width: 100%;
+                position: relative;
+                .movieDetails{
+                    float: right;
+                    position: absolute;
+                    right: 16%;
+                    .summary{
+                        margin-top: 5%;
+                        margin-bottom: 5%;
+                    }
+                    .detailsSection{
+                        .modalColorTitles{
+                            color: $ada;
+                            font-size: 20px;
+                            margin-bottom: 3%;
+                        }
+                        .modalText{
+                            margin-bottom: 5%;
+                        }
+                    }
                 }
             }
         }

@@ -157,9 +157,36 @@
                     <!-- </div> -->
                 </div>
             </section>
-
         </div>
     </div>
+    <section class="modal" id="activeModal">
+        <div class="modalContainer">
+            <div class="topModal">
+                <div class="backImage"></div>
+                <a class="closeModal" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                </a>
+                <div class="modalMovieTitle" id="modalMovieTitle">
+                    <p>Título de la película</p>
+                    <span>Subtítulo</span>
+                </div>
+            </div>
+            <img class="modalPoster" id="modalPoster" src="assets2/imgexample.jpg">
+            <div class="bottomModal">
+                <div class="movieDetails" id="movieDetails">
+                    <p class="summary">Lorem ipsum dolor sit amet consectetur adipisicing</p>
+                    <div class="detailsSection" id="detailsSection">
+                        <p class="modalColorTitles">Genres</p>
+                        <p class="modalText">Palabritas</p>
+                    </div>
+                    <div class="detailsSection" id="detailsSection">
+                        <p class="modalColorTitles">Release Date</p>
+                        <p class="modalText">09/05/2079</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <script type="text/javascript" >transformicons.add(".tcon")</script>
 </body>
 </html>
