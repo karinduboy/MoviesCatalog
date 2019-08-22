@@ -339,7 +339,7 @@ body{
             }
         }
     }
-    .modal{
+    .activeModal{
         width: 100%;
         top:0;
         left: 0;
@@ -348,8 +348,8 @@ body{
         z-index: 105;
         height: 100vh;
         .modalContainer{
-            width: 65%;
-            height: 80%;
+            width: 780px;
+            height: 90%;
             position: relative;
             z-index: 106;
             background-color: white;
@@ -363,8 +363,8 @@ body{
                 .backImage{
                 }
                 .closeModal{
-                    width: 40px;
-                    height: 40px;
+                    width: 35px;
+                    height: 35px;
                     background-color: $ada;
                     font-size: 40px;
                     -webkit-text-stroke: 4.5px $ada;
@@ -374,10 +374,14 @@ body{
                     position: absolute;
                     top: 0;
                     right: 0;
+                    &:hover{
+                        background-color: $menuBg;
+                        -webkit-text-stroke: 4.5px $menuBg;
+                    }
                 }
                 .modalMovieTitle{
                     position: absolute;
-                    top: 50%;
+                    top: 40%;
                     right: 25%;
                     p{
                         font-size: 30px;
@@ -391,10 +395,9 @@ body{
                 }
             }
             .modalPoster{
-                height: 305px;
+                width: 260px;
                 position: absolute;
                 top: 15%;
-                //bottom: 50%;
                 left: 5%;
             }
             .bottomModal{
@@ -403,10 +406,12 @@ body{
                 .movieDetails{
                     float: right;
                     position: absolute;
-                    right: 16%;
+                    right: 8%;
+                    width: 390px;
                     .summary{
                         margin-top: 5%;
                         margin-bottom: 5%;
+                        line-height: 150%;
                     }
                     .detailsSection{
                         .modalColorTitles{
@@ -423,3 +428,8 @@ body{
         }
     }
 }
+
+.modal{
+    display:none;
+}
+

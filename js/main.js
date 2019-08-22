@@ -1,10 +1,3 @@
-//menú hamburguesa
-const toggleMenu = () => {
-
-    let leftNav = document.getElementById("leftNav")
-        leftNav.classList.toggle("openLeftNav")
-}
-
 // definimos las variables globales
 const apiKey = "c6f4b7af00ff89712efe89669fe19897";
 let baseUrl,moviesByCategory, apiConf, totalItems;
@@ -31,4 +24,24 @@ const setMovieItems = (category, totalItems) => {
     let container = document.getElementById(`${category}Results`)
     let movieItems = getMovieResults(category)
     // for(i=0; ) SE ME OLVIDO LA SINTAXIS DEL FOR, INVESTIGANDO
+}
+
+//menú responsive
+const toggleMenu = () => {
+
+    let leftNav = document.getElementById("leftNav")
+        leftNav.classList.toggle("openLeftNav")
+}
+
+//modal
+const modal = () => {
+    let activeModal = document.getElementById('activeModal')
+    activeModal.classList.remove('modal')
+    activeModal.classList.add('activeModal')
+}
+    
+const closeModal = () => {
+    let closeModal = document.getElementById('activeModal')
+    closeModal.classList.remove('activeModal')
+    closeModal.classList.add('modal')
 }

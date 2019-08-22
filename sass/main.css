@@ -503,7 +503,7 @@ body .mainContainer .resultsContainer .sectionContainer .firstTitles .titleConta
   color: rgba(8, 28, 36, 0.7);
 }
 
-body .modal {
+body .activeModal {
   width: 100%;
   top: 0;
   left: 0;
@@ -513,9 +513,9 @@ body .modal {
   height: 100vh;
 }
 
-body .modal .modalContainer {
-  width: 65%;
-  height: 80%;
+body .activeModal .modalContainer {
+  width: 780px;
+  height: 90%;
   position: relative;
   z-index: 106;
   background-color: white;
@@ -525,15 +525,15 @@ body .modal .modalContainer {
           transform: translate(-50%, -50%);
 }
 
-body .modal .modalContainer .topModal {
+body .activeModal .modalContainer .topModal {
   height: 45%;
   background-color: grey;
   position: relative;
 }
 
-body .modal .modalContainer .topModal .closeModal {
-  width: 40px;
-  height: 40px;
+body .activeModal .modalContainer .topModal .closeModal {
+  width: 35px;
+  height: 35px;
   background-color: #BC3B69;
   font-size: 40px;
   -webkit-text-stroke: 4.5px #BC3B69;
@@ -551,53 +551,64 @@ body .modal .modalContainer .topModal .closeModal {
   right: 0;
 }
 
-body .modal .modalContainer .topModal .modalMovieTitle {
+body .activeModal .modalContainer .topModal .closeModal:hover {
+  background-color: #ffffff;
+  -webkit-text-stroke: 4.5px #ffffff;
+}
+
+body .activeModal .modalContainer .topModal .modalMovieTitle {
   position: absolute;
-  top: 50%;
+  top: 40%;
   right: 25%;
 }
 
-body .modal .modalContainer .topModal .modalMovieTitle p {
+body .activeModal .modalContainer .topModal .modalMovieTitle p {
   font-size: 30px;
   color: #BC3B69;
   margin-bottom: 1%;
 }
 
-body .modal .modalContainer .topModal .modalMovieTitle span {
+body .activeModal .modalContainer .topModal .modalMovieTitle span {
   color: #ffffff;
   font-size: 19px;
 }
 
-body .modal .modalContainer .modalPoster {
-  height: 305px;
+body .activeModal .modalContainer .modalPoster {
+  width: 260px;
   position: absolute;
   top: 15%;
   left: 5%;
 }
 
-body .modal .modalContainer .bottomModal {
+body .activeModal .modalContainer .bottomModal {
   width: 100%;
   position: relative;
 }
 
-body .modal .modalContainer .bottomModal .movieDetails {
+body .activeModal .modalContainer .bottomModal .movieDetails {
   float: right;
   position: absolute;
-  right: 16%;
+  right: 8%;
+  width: 390px;
 }
 
-body .modal .modalContainer .bottomModal .movieDetails .summary {
+body .activeModal .modalContainer .bottomModal .movieDetails .summary {
   margin-top: 5%;
   margin-bottom: 5%;
+  line-height: 150%;
 }
 
-body .modal .modalContainer .bottomModal .movieDetails .detailsSection .modalColorTitles {
+body .activeModal .modalContainer .bottomModal .movieDetails .detailsSection .modalColorTitles {
   color: #BC3B69;
   font-size: 20px;
   margin-bottom: 3%;
 }
 
-body .modal .modalContainer .bottomModal .movieDetails .detailsSection .modalText {
+body .activeModal .modalContainer .bottomModal .movieDetails .detailsSection .modalText {
   margin-bottom: 5%;
+}
+
+.modal {
+  display: none;
 }
 /*# sourceMappingURL=main.css.map */
