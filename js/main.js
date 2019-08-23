@@ -26,25 +26,7 @@ const setConfVars = () => {
     })
 }
 
-//menú responsive
-const toggleMenu = () => {
 
-    let leftNav = document.getElementById("leftNav")
-        leftNav.classList.toggle("openLeftNav")
-}
-
-//modal
-const modal = () => {
-    let activeModal = document.getElementById('activeModal')
-    activeModal.classList.remove('modal')
-    activeModal.classList.add('activeModal')
-}
-    
-const closeModal = () => {
-    let closeModal = document.getElementById('activeModal')
-    closeModal.classList.remove('activeModal')
-    closeModal.classList.add('modal')
-}
 //con esto debemos poder crear los items de la home...la idea es llamar a esta función en el onload de la home
 const setHomeMovieItems = (categoryList) => {
     categoryList.forEach( category => {        
@@ -86,5 +68,25 @@ const setHomeMovieItems = (categoryList) => {
         container.appendChild(titleContainer)
     })}
     // }
+
+//menú responsive
+const toggleMenu = () => {
+
+    let leftNav = document.getElementById("leftNav")
+        leftNav.classList.toggle("openLeftNav")
+}
+
+//modal
+const modal = () => {
+    let activeModal = document.getElementById('activeModal')
+    activeModal.classList.remove('modal')
+    activeModal.classList.add('activeModal')
+}
+    
+const closeModal = () => {
+    let closeModal = document.getElementById('activeModal')
+    closeModal.classList.remove('activeModal')
+    closeModal.classList.add('modal')
+}
         
 
