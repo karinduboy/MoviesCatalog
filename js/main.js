@@ -32,7 +32,7 @@ const setHomeMovieItems = (categoryList) => {
     categoryList.forEach( category => {        
         getMovieResults(category)
             .then (
-                container = document.getElementById(`${category}Results`)
+                container = document.getElementById(`${category}Results`);
                 container.innerHTML=''
                 let sectionTL = document.createElement('div');
                 sectionTL.classList.add('sectionTopLine')
@@ -48,26 +48,25 @@ const setHomeMovieItems = (categoryList) => {
                 sectionTL.appendChild(sectionTitle)
                 sectionTL.appendChild(viewAllLink)
                 container.appendChild(sectionTL)
+                movieResults => movieResults.results.slice(0,5).forEach( movieItem => {
+                    titleContainer = document.createElement('div');
+                    let titlePosterContainer = document.createElement('div');
+                    let titlePoster = document.createElement('img');
+                    let titleName = document.createElement('p');
+                    titleContainer.classList.add('titleContainer')
+                    titlePosterContainer.classList.add('titlePoster')
+                    titlePoster.classList.add('titlePoster')
+                    titleName.classList.add('titleName')
+                    titleContainer.id = movieItem.id
+                    titlePoster.src = `${baseUrl}/w500/${movieItem.poster_path}`
+                    titleName.innerText = movieItem.title
+                    titlePosterContainer.appendChild(titlePoster)
+                    titlePosterContainer.appndChild(titleName)
+                    titleContainer.appendChild(titlePosterContainer)
+                    container.appendChild(titleContainer)
+                })
             )
-            .then ( movieResults => movieResults.results.slice(0,5).forEach( movieItem => {
-                titleContainer = document.createElement('div');
-                let titlePosterContainer = document.createElement('div');
-                let titlePoster = document.createElement('img');
-                let titleName = document.createElement('p');
-                titleContainer.classList.add('titleContainer')
-                titlePosterContainer.classList.add('titlePoster')
-                titlePoster.classList.add('titlePoster')
-                titleName.classList.add('titleName')
-                titleContainer.id = movieItem.id
-                titlePoster.src = `${baseUrl}/w500/${movieItem.poster_path}`
-                titleName.innerText = movieItem.title
-                titlePosterContainer.appendChild(titlePoster)
-                titlePosterContainer.appndChild(titleName)
-                titleContainer.appendChild(titlePosterContainer)
-                container.appendChild(titleContainer)
-            }))
-        // container.appendChild(titleContainer)
-    })}
-    // }
+    })
+}
         
 
