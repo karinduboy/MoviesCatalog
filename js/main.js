@@ -4,7 +4,7 @@ var baseUrl, moviesByCategory, apiConf, totalItems, titleContainer, container;
 var category = ''
 const categoryList = ['popular','top_rated','upcoming','now_playing']
 
-// traemos la configuracion necesaria para usar las url de la API
+// traemos la configuracion necesaria para usar las url de la API 
 async function getApiConf (){
     const result = await fetch(`https://api.themoviedb.org/3/configuration?api_key=${apiKey}`);
     apiConf = await result.json();
@@ -27,40 +27,37 @@ const setConfVars = () => {
     })
 }
 
+const handleSearch = () => {
+    let query = event.target.value;
+	if (query.length >= 3 || (event.keyCode === 13 && query !== lastRequest)) {
+		lastRequest = query;
+		fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`)
+            .then((res) => res.json())
+            //.then ( (res) => console.log(res))
+			.then((res) => printQueryResults(res.results));
+	}
+};
 
-//con esto debemos poder crear los items de la home...la idea es llamar a esta función en el onload de la home
-const setHomeMovieItems = (categoryList) => {
-    categoryList.forEach( category => {        
-        getMovieResults(category)
-<<<<<<< HEAD
-            .then ( movieResults => movieResults.results.slice(0,5).forEach( movieItem => {
-                let titleContainer = document.createElement('div');
-                let titlePosterContainer = document.createElement('div');
-                let titlePoster = document.createElement('img');
-                let titleName = document.createElement('p');
-                titleContainer.classList.add('titleContainer')
-                titlePosterContainer.classList.add('titlePoster')
-                titlePoster.classList.add('titlePoster')
-                titleName.classList.add('titleName')
-                
-                // titleContainer.id = movieItem.id
-                // titlePoster.src = `${apiConf.base_url}/w500/${movieItem.poster_url}`
-                // titleName.innerText = movieItem.name
-                // titlePosterContainer.appendChild(titlePoster)
-                // titlePosterContainer.appendChild(titleName)
-                // titleContainer.appendChild(titlePosterContainer)
-                // return titleContainer
-            }))
-        container.appendChild(titleContainer)
-    })}
-    // }
+const printQueryResults = (movies) => {
+	const container = document.getElementById('resultsContainer');
+    container.innerHTML = '';
+    const searchResults = document.createElement("section")
+    searchResults.classList.add("searchResults")
+    const divPosters = document.createElement("div")
+    divPosters.classList.add("titleContainer")
 
-//menú responsive
-const toggleMenu = () => {
-
-    let leftNav = document.getElementById("leftNav")
-        leftNav.classList.toggle("openLeftNav")
-}
+	movies.forEach((mov) => {
+		let moviePoster = document.createElement('img');
+		moviePoster.src = `https://image.tmdb.org/t/p/w185${mov.poster_path}`
+        moviePoster.href = '#';
+        moviePoster.id = mov.id
+        moviePoster.classList.add("titlePoster")
+        moviePoster.onclick = () => modal(mov);
+        divPosters.appendChild(moviePoster)
+        searchResults.appendChild(divPosters)
+		container.appendChild(searchResults);
+	});   
+};
 
 //modal
 const modal = () => {
@@ -73,9 +70,16 @@ const closeModal = () => {
     let closeModal = document.getElementById('activeModal')
     closeModal.classList.remove('activeModal')
     closeModal.classList.add('modal')
-=======
-            .then (
-                container = document.getElementById(`${category}Results`);
+}
+
+
+/*
+//con esto debemos poder crear los items de la home...la idea es llamar a esta función en el onload de la home
+const setHomeMovieItems = (categoryList) => {
+    categoryList.forEach( category => {        
+        getMovieResults(category)
+            .then ( (res) => {
+                container = document.getElementById(`${category} Results`);
                 container.innerHTML=''
                 let sectionTL = document.createElement('div');
                 sectionTL.classList.add('sectionTopLine')
@@ -108,9 +112,16 @@ const closeModal = () => {
                     titleContainer.appendChild(titlePosterContainer)
                     container.appendChild(titleContainer)
                 })
-            )
-    })
->>>>>>> ebaa23a00019f0a468e09781211b02805944b093
+            }
+        )
+    }
+
+*/
+
+
+//menú responsive
+const toggleMenu = () => {
+    let leftNav = document.getElementById("leftNav")
+    leftNav.classList.toggle("openLeftNav")
 }
-        
 

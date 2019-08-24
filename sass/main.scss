@@ -282,6 +282,26 @@ body{
                 padding: 0 2.5%;
                 margin: 3% 0;
             }
+            .searchResults{
+                display: flex;
+                margin: 5%;
+                justify-content: space-between;
+                flex-wrap: nowrap;
+                .titleContainer{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    //flex-wrap: wrap;
+                    padding: 20px;
+                    .titlePoster{
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin-left: 20px;
+                        flex-wrap: wrap;
+                    }
+                }
+            }
             .sectionContainer{
                 .sectionTopLine{
                     display: flex;
@@ -315,6 +335,7 @@ body{
                         padding: 0 0 2% 0;
                         width: 200px;
                         height: 300px;
+                        display: flex;
                         .titlePoster{
                             background-color: #444444;
                             width: 100%;
@@ -324,7 +345,8 @@ body{
                             display: flex;
                             align-items: center;
                             justify-content: center;
-                            margin: auto;
+                            margin-left: 20px;
+
                             @media only screen and (max-width: $mobile) {
                                 width: 180px;
                                 height: 270px;

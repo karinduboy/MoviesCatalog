@@ -43,7 +43,7 @@
             </a>
             <div class="searchBar">
                 <svg class="searchIcon"><use href="#iconSearch"/></svg>
-                <input type="search" placeholder="Search for a movie...">
+                <input type="search" placeholder="Search for a movie..." id="searchMovie" onkeyup="handleSearch()">
             </div>
             <a href="#" class ="responsiveMenu" id="responsiveMenu" onclick="toggleMenu()">
                 <button type="button" class="tcon tcon-menu--xcross" aria-label="toggle menu">
@@ -89,14 +89,14 @@
                 </a>
             </li>
         </ul>
-    </nav>
+    </nav>-->
     <div class="mainContainer">
-        <div class="frontImage">
+        <!--<div class="frontImage">
             <img class="indexImg" src="assets2/batman.jpg">
             <h1 class="pageTitle">THE MOVIE DB APP</h1>
-        </div>
-        <div class="resultsContainer">
-            <section id="popularResults" class="sectionContainer">
+        </div>-->
+        <div class="resultsContainer" id="resultsContainer">
+            <!--<section id="popularResults" class="sectionContainer">-->
                 <!-- <div class="sectionTopLine">
                     <h2 class="sectionTitle topLine">popular movies</h2>
                     <a class="viewAllLink topLine" href="#">View All...</a>
