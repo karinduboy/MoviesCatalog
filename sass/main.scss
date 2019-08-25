@@ -171,14 +171,17 @@ body{
                 }
                 .firstTitles{
                     display: grid;
-                    // grid-gap: 5%;
+                    grid-gap: 3%;
                     justify-content: space-between;
                     grid-template-columns: auto auto auto auto auto;
                     padding: 3% 0;
-                    .titleContainer{
+                    a.titleContainer{
                         padding: 0 0 2% 0;
                         max-width: 200px;
                         max-height: 300px;
+                        display: block;
+                        object-fit: cover;
+                        object-position: center;
                         .titlePoster{
                             background-color: #444444;
                             width: 100%;

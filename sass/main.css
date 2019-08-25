@@ -261,6 +261,7 @@ body .mainContainer .resultsContainer .sectionContainer .sectionTopLine .viewAll
 body .mainContainer .resultsContainer .sectionContainer .firstTitles {
   display: -ms-grid;
   display: grid;
+  grid-gap: 3%;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -269,13 +270,18 @@ body .mainContainer .resultsContainer .sectionContainer .firstTitles {
   padding: 3% 0;
 }
 
-body .mainContainer .resultsContainer .sectionContainer .firstTitles .titleContainer {
+body .mainContainer .resultsContainer .sectionContainer .firstTitles a.titleContainer {
   padding: 0 0 2% 0;
   max-width: 200px;
   max-height: 300px;
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
 }
 
-body .mainContainer .resultsContainer .sectionContainer .firstTitles .titleContainer .titlePoster {
+body .mainContainer .resultsContainer .sectionContainer .firstTitles a.titleContainer .titlePoster {
   background-color: #444444;
   width: 100%;
   max-width: 200px;
@@ -285,7 +291,7 @@ body .mainContainer .resultsContainer .sectionContainer .firstTitles .titleConta
   height: 95%;
 }
 
-body .mainContainer .resultsContainer .sectionContainer .firstTitles .titleContainer .titleName {
+body .mainContainer .resultsContainer .sectionContainer .firstTitles a.titleContainer .titleName {
   padding: 10% 0 0 0;
   color: rgba(8, 28, 36, 0.7);
 }
