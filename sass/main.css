@@ -243,7 +243,6 @@ body nav.leftNav {
 }
 
 body nav.leftNav ul.leftMenu {
-  background-color: #ffffff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -273,11 +272,21 @@ body nav.leftNav ul.leftMenu {
 }
 
 body nav.leftNav ul.leftMenu li.menuOption {
+  background-color: #ffffff;
   list-style: none;
   font-size: 12.5px;
   width: 100%;
   height: 95px;
   border-bottom: 1px solid #F8F8F8;
+}
+
+body nav.leftNav ul.leftMenu li.menuOption :hover {
+  color: #081C24;
+  background-color: #F8F8F8;
+}
+
+body nav.leftNav ul.leftMenu li.menuOption :hover .leftMenuIcon {
+  fill: #081C24;
 }
 
 @media only screen and (max-width: 750px) {
@@ -304,8 +313,6 @@ body nav.leftNav ul.leftMenu li.menuOption a.menuLink {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
   width: 100%;
   height: 100%;
   border-bottom: 0.2px solid #c6c6c6;
@@ -316,14 +323,6 @@ body nav.leftNav ul.leftMenu li.menuOption a.menuLink .leftMenuIcon {
   height: 20px;
   margin-bottom: 10px;
   fill: rgba(8, 28, 36, 0.7);
-}
-
-body nav.leftNav ul.leftMenu li.menuOption a.menuLink :hover {
-  color: #081C24;
-}
-
-body nav.leftNav ul.leftMenu li.menuOption a.menuLink :hover .leftMenuIcon {
-  fill: #081C24;
 }
 
 @media only screen and (max-width: 750px) {
@@ -509,18 +508,26 @@ body .mainContainer .resultsContainer .sectionContainer .firstTitles {
       -ms-flex-pack: center;
           justify-content: center;
   text-align: center;
-  -ms-grid-columns: (minmax(150px, 1fr))[auto-fill];
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  -ms-grid-columns: auto auto auto auto auto;
+      grid-template-columns: auto auto auto auto auto;
+  -ms-grid-rows: 1;
+  -ms-grid-columns: 5;
+      grid-template: 1 / 5;
   margin: auto;
 }
 
 body .mainContainer .resultsContainer .sectionContainer .firstTitles .titleContainer {
   padding: 0 0 2% 0;
-  width: 200px;
-  height: 300px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 body .mainContainer .resultsContainer .sectionContainer .firstTitles .titleContainer .titlePoster {
@@ -529,15 +536,6 @@ body .mainContainer .resultsContainer .sectionContainer .firstTitles .titleConta
   max-width: 200px;
   max-height: 300px;
   height: 95%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   margin-left: 20px;
 }
 

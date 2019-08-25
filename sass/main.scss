@@ -168,7 +168,7 @@ body{
             }
         }
         ul.leftMenu{
-            background-color:$menuBg;
+            // background-color:$men$uBg;
             display: flex;
             left: 0;
             top: 75px;
@@ -182,11 +182,19 @@ body{
                 width: 100%;
             }
             li.menuOption{
+                background-color: $menuBg;
                 list-style: none;
                 font-size: 12.5px;
                 width: 100%;
                 height: 95px;
                 border-bottom: 1px solid $bgColor;
+                :hover{
+                    color: $darkBlue;
+                    background-color: $bgColor;
+                    .leftMenuIcon{
+                        fill: $darkBlue;
+                    }
+                }
                 @media only screen and (max-width: $tablet){
                     text-align: center;
                     width: 50%;
@@ -199,7 +207,7 @@ body{
                     flex-direction: column;
                     justify-content: center;
                     align-items: center;
-                    box-sizing: border-box;
+                    // box-sizing: border-box;
                     width: 100%;
                     height: 100%;
                     border-bottom: 0.2px solid #c6c6c6;
@@ -209,14 +217,8 @@ body{
                         margin-bottom: 10px;
                         fill: $trsDB;
                     }
-                    :hover{
-                        color: $darkBlue;
-                        .leftMenuIcon{
-                            fill: $darkBlue;
-                        } 
-                    }
                     @media only screen and (max-width: $tablet){
-                    border-left: 1.5px solid #f8f8f8;
+                        border-left: 1.5px solid #f8f8f8;
                     }
                     
                 }
@@ -331,25 +333,27 @@ body{
                     align-items: center;
                     justify-content: center;
                     text-align: center;
-                    //justify-content: space-between;
-                    //grid-template-columns: auto auto auto auto auto;
-                    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-                    //padding: 3% 0;
+                    grid-template-columns: auto auto auto auto auto;
+                    // grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                    grid-template: 1 / 5;
                     margin: auto;
                     .titleContainer{
                         padding: 0 0 2% 0;
-                        width: 200px;
-                        height: 300px;
-                        display: flex;
+                        display:flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        // width: 200px;
+                        // height: 300px;
+                        // display: flex;
                         .titlePoster{
                             background-color: #444444;
                             width: 100%;
                             max-width: 200px;
                             max-height: 300px;
                             height: 95%;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
+                            // display: flex;
+                            // align-items: center;
+                            // justify-content: center;
                             margin-left: 20px;
                             @media only screen and (max-width: $mobile) {
                                 width: 180px;
