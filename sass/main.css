@@ -221,6 +221,8 @@ body nav.leftNav {
   background-color: #ffffff;
   float: left;
   position: fixed;
+  background-color: #ffffff;
+  z-index: 10;
 }
 
 @media only screen and (max-width: 750px) {
@@ -238,28 +240,29 @@ body nav.leftNav {
     display: block;
     position: absolute;
   }
-  body nav.leftNav ul.leftMenu {
-    background-color: #ffffff;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    left: 0;
-    top: 75px;
-    width: 95px;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    text-align: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-  }
 }
 
-@media only screen and (max-width: 750px) and (max-width: 750px) {
+body nav.leftNav ul.leftMenu {
+  background-color: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  left: 0;
+  top: 75px;
+  width: 95px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 750px) {
   body nav.leftNav ul.leftMenu {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -269,23 +272,15 @@ body nav.leftNav {
   }
 }
 
-@media only screen and (max-width: 750px) {
-  body nav.leftNav ul.leftMenu li.menuOption {
-    list-style: none;
-    font-size: 12.5px;
-    width: 100%;
-    height: 95px;
-    border-bottom: 1px solid #F8F8F8;
-  }
-  body nav.leftNav ul.leftMenu li.menuOption :hover {
-    color: #081C24;
-  }
-  body nav.leftNav ul.leftMenu li.menuOption :hover .leftMenuIcon {
-    fill: #081C24;
-  }
+body nav.leftNav ul.leftMenu li.menuOption {
+  list-style: none;
+  font-size: 12.5px;
+  width: 100%;
+  height: 95px;
+  border-bottom: 1px solid #F8F8F8;
 }
 
-@media only screen and (max-width: 750px) and (max-width: 750px) {
+@media only screen and (max-width: 750px) {
   body nav.leftNav ul.leftMenu li.menuOption {
     text-align: center;
     width: 50%;
@@ -293,37 +288,47 @@ body nav.leftNav {
   }
 }
 
-@media only screen and (max-width: 750px) {
-  body nav.leftNav ul.leftMenu li.menuOption a.menuLink {
-    text-decoration: none;
-    color: #081C24;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    width: 100%;
-    height: 100%;
-    border-bottom: 0.2px solid #c6c6c6;
-  }
+body nav.leftNav ul.leftMenu li.menuOption a.menuLink {
+  text-decoration: none;
+  color: #081C24;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border-bottom: 0.2px solid #c6c6c6;
 }
 
-@media only screen and (max-width: 750px) and (max-width: 750px) {
+body nav.leftNav ul.leftMenu li.menuOption a.menuLink .leftMenuIcon {
+  width: 20px;
+  height: 20px;
+  margin-bottom: 10px;
+  fill: rgba(8, 28, 36, 0.7);
+}
+
+body nav.leftNav ul.leftMenu li.menuOption a.menuLink :hover {
+  color: #081C24;
+}
+
+body nav.leftNav ul.leftMenu li.menuOption a.menuLink :hover .leftMenuIcon {
+  fill: #081C24;
+}
+
+@media only screen and (max-width: 750px) {
   body nav.leftNav ul.leftMenu li.menuOption a.menuLink {
     border-left: 1.5px solid #f8f8f8;
-  }
-}
-
-@media only screen and (max-width: 750px) {
-  body nav.leftNav ul.leftMenu li.menuOption .leftMenuIcon {
-    width: 20px;
-    height: 20px;
-    margin-bottom: 10px;
-    fill: rgba(8, 28, 36, 0.7);
   }
 }
 
