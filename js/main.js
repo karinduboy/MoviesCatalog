@@ -18,7 +18,9 @@ const getCategoryMovieResults = (category) => {
         .then ( res => moviesByCategory = res.results)
 };
 
-const createElement = (tag,elemClasses,elementId='',text='') => {
+// FUNCIONES UTILITARIAS
+// FU: creacion de elementos en pantalla
+const createElement = (tag,elemClasses,elementId={},text='') => {
     let element = document.createElement(tag);
     elemClasses.forEach( eClass => element.classList.add(eClass))
     element.id = elementId
@@ -26,32 +28,38 @@ const createElement = (tag,elemClasses,elementId='',text='') => {
     return element
 };
 
+//FU: appendea hijos a los elementos
 const setChilds = (father, childList) => {
     childList.forEach( (child) => {father.appendChild(child)})
 };
 
+//FU: setear el nodo de  la pantalla donde se crearán los elementos 
 const setNode = (nodeId) => {
     let container = document.getElementById(nodeId)
     return container
 };
 
+// busca las peliculas de las categorias del home
 const searchHomeCategoryMovies = (category,categoryNode) => {
 	fetch(`https://api.themoviedb.org/3/movie/${category}?api_key=${apiKey}`)
 		.then((res) => res.json())
 		.then((res) => printCategoryResults((res.results.slice(0,5)),categoryNode));
 };
 
+// muestra en pantalla los resultados de las categorías
 const printCategoryResults = (movies,categoryNode) => {
     movies.forEach( movie => {
         let movieItem = createElement('a',[ 'titleContainer' ],movie);
         let movieImg = createElement('img',[ 'titlePoster' ]);
         movieImg.src = `${apiConf.images.base_url}/w342/${movie.poster_path}`;
-        let movieName = createElement('p',[ 'titleName' ],'',movie.title);
+        movieImg.onclick = () => modal(movie.id); //ojo hacer funcion que asigne funcionalidad a los eventos
+        let movieName = createElement('p',[ 'titleName' ],{},movie.title);
         setChilds(movieItem,[movieImg,movieName])
         setChilds(categoryNode,[movieItem])
     })
 };
 
+// muestra los elementos del home
 const setHomeMovieItems = async (categoryList) => {
     categoryList.forEach(async (category) => {
         let categoryMoviesContainer = setNode(`${category}Results`)
@@ -59,6 +67,7 @@ const setHomeMovieItems = async (categoryList) => {
     })
 };
 
+// Funcion que realiza los request del search 
 const handleSearch = () => {
     let query = event.target.value;
 	if (query.length >= 3 || (event.keyCode === 13 && query !== lastRequest)) {
@@ -69,29 +78,32 @@ const handleSearch = () => {
 	}
 };
 
+// funcion que imprime los resultados de la busqueda (OPTIMIZAR CON LAS FUNCIONES DE CREACION DE ELEMENTOS)
 const printQueryResults = (movies) => {
-	const container = document.getElementById('resultsContainer');
+	let container = setNode('resultsContainer');
     container.innerHTML = '';
-    const searchResults = document.createElement("section")
-    searchResults.classList.add("searchResults")
-    const divPosters = document.createElement("div")
-    divPosters.classList.add("titleContainer")
+    let searchResults = createElement('section',['searchResults'])
+    // document.createElement("section")
+    // searchResults.classList.add("searchResults")
+    let divPosters = createElement('div',['titleContainer'])
+    // document.createElement("div")
+    // divPosters.classList.add("titleContainer")
 
 	movies.forEach((mov) => {
-		let moviePoster = document.createElement('img');
+        let moviePoster = createElement('img',['titlePoster'],mov)
 		moviePoster.src = `https://image.tmdb.org/t/p/w185${mov.poster_path}`
         moviePoster.href = '#';
-        moviePoster.id = mov.id
-        moviePoster.classList.add("titlePoster")
-        moviePoster.onclick = () => modal(mov);
-        divPosters.appendChild(moviePoster)
-        searchResults.appendChild(divPosters)
-		container.appendChild(searchResults);
+        let movieTitle = createElement('p',['titleName'],'',mov.title)
+        // debugger;
+        moviePoster.onclick = () => modal(mov.id);
+        setChilds(divPosters,[moviePoster,movieTitle])
+        setChilds(searchResults,[divPosters])
+        setChilds(container,[searchResults])
 	});   
 };
 
 //modal
-const modal = () => {
+const modal = (movieId) => {
     let activeModal = document.getElementById('activeModal')
     activeModal.classList.remove('modal')
     activeModal.classList.add('activeModal')
