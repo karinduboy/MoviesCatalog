@@ -1,6 +1,6 @@
 // definimos las variables globales
 var apiKey = "c6f4b7af00ff89712efe89669fe19897";
-var baseUrl, moviesByCategory, apiConf, totalItems, titleContainer, container;
+var baseUrl, moviesByCategory, apiConf, totalItems, titleContainer, container, moviesById;
 var category = '';
 const categoryList = ['popular','top_rated','upcoming','now_playing'];
 // var 
@@ -15,8 +15,15 @@ const getApiConf = () => {
 const getCategoryMovieResults = (category) => {
     fetch(`https://api.themoviedb.org/3/movie/${category}?api_key=${apiKey}`)
     .then ( res => res.json())
-        .then ( res => moviesByCategory = res.results)
+        .then ( (res => moviesByCategory = res.results))
 };
+
+const searchSingleMovieData = (movieId) => {
+    fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`)
+    .then ( (res) => res.json())
+    //.then ( (res) => fillModal(res) )
+    .then (res => console.log(res))
+}
 
 // FUNCIONES UTILITARIAS
 // FU: creacion de elementos en pantalla
@@ -43,7 +50,7 @@ const setNode = (nodeId) => {
 const searchHomeCategoryMovies = (category,categoryNode) => {
 	fetch(`https://api.themoviedb.org/3/movie/${category}?api_key=${apiKey}`)
 		.then((res) => res.json())
-		.then((res) => printCategoryResults((res.results.slice(0,5)),categoryNode));
+        .then((res) => printCategoryResults((res.results.slice(0,5)),categoryNode));
 };
 
 // muestra en pantalla los resultados de las categorías
@@ -52,7 +59,7 @@ const printCategoryResults = (movies,categoryNode) => {
         let movieItem = createElement('a',[ 'titleContainer' ],movie);
         let movieImg = createElement('img',[ 'titlePoster' ]);
         movieImg.src = `${apiConf.images.base_url}/w342/${movie.poster_path}`;
-        movieImg.onclick = () => modal(movie.id); //ojo hacer funcion que asigne funcionalidad a los eventos
+        movieItem.setAttribute("onclick", "modal(this.id)"); //ojo hacer funcion que asigne funcionalidad a los eventos
         let movieName = createElement('p',[ 'titleName' ],{},movie.title);
         setChilds(movieItem,[movieImg,movieName])
         setChilds(categoryNode,[movieItem])
@@ -102,11 +109,28 @@ const printQueryResults = (movies) => {
 	});   
 };
 
+/*
+const fillModal = (movieId) => {
+    getCategoryMovieResults()
+    //return movieId
+    //console.log(movieId)
+    /*
+    movie.forEach(mov => {
+        let titleContainer = setNode("modalMovieTitle")
+        let modalTitle = createElement("p", ["modalTitle"],"", mov.title)
+        setChilds(titleContainer, [modalTitle])
+    })
+    
+    
+    
+}*/
+
 //modal
-const modal = (movieId) => {
+const modal = async (movieId) => {
     let activeModal = document.getElementById('activeModal')
     activeModal.classList.remove('modal')
     activeModal.classList.add('activeModal')
+    await searchSingleMovieData(movieId)
 };
     
 const closeModal = () => {
