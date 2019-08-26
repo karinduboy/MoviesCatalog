@@ -61,6 +61,10 @@ body {
   position: relative;
 }
 
+body a:hover {
+  cursor: pointer;
+}
+
 body header {
   width: 100%;
   height: 75px;
@@ -409,13 +413,13 @@ body .mainContainer .frontImage .pageTitle {
 
 @media only screen and (max-width: 750px) {
   body .mainContainer .frontImage .pageTitle {
-    font-size: 350%;
+    font-size: 49px;
   }
 }
 
 @media only screen and (max-width: 420px) {
   body .mainContainer .frontImage .pageTitle {
-    font-size: 225%;
+    font-size: 31.5px;
   }
 }
 
@@ -428,7 +432,6 @@ body .mainContainer .resultsContainer {
 @media only screen and (max-width: 420px) {
   body .mainContainer .resultsContainer {
     padding: 0 2.5%;
-    margin: 3% 0;
   }
 }
 
@@ -480,6 +483,10 @@ body .mainContainer .resultsContainer .sectionContainer .sectionTopLine {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -504,34 +511,43 @@ body .mainContainer .resultsContainer .sectionContainer .sectionTopLine .viewAll
 body .mainContainer .resultsContainer .sectionContainer .firstTitles {
   display: -ms-grid;
   display: grid;
-  grid-gap: 5%;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  grid-gap: 4%;
   text-align: left;
-  -ms-grid-columns: auto auto auto auto auto;
-      grid-template-columns: auto auto auto auto auto;
-  -ms-grid-rows: 1;
+  -ms-grid-rows: 2;
   -ms-grid-columns: 5;
-      grid-template: 1 / 5;
+      grid-template: 2 / 5;
+  -ms-grid-columns: (17%)[5];
+      grid-template-columns: repeat(5, 17%);
+  -ms-grid-rows: 90% 10%;
+      grid-template-rows: 90% 10%;
   margin: auto;
+}
+
+@media only screen and (max-width: 750px) {
+  body .mainContainer .resultsContainer .sectionContainer .firstTitles {
+    -ms-grid-rows: 3;
+    -ms-grid-columns: 2;
+        grid-template: 3 / 2;
+    -ms-grid-columns: (48%)[2];
+        grid-template-columns: repeat(2, 48%);
+    -ms-grid-rows: auto auto auto;
+        grid-template-rows: auto auto auto;
+    overflow: hidden;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  body .mainContainer .resultsContainer .sectionContainer .firstTitles {
+    -ms-grid-rows: 5;
+    -ms-grid-columns: 1;
+        grid-template: 5 / 1;
+    -ms-grid-rows: auto;
+        grid-template-rows: auto;
+  }
 }
 
 body .mainContainer .resultsContainer .sectionContainer .firstTitles .titleContainer {
   padding: 0 0 2% 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: left;
-      -ms-flex-pack: left;
-          justify-content: left;
 }
 
 body .mainContainer .resultsContainer .sectionContainer .firstTitles .titleContainer .titlePoster {
@@ -540,13 +556,6 @@ body .mainContainer .resultsContainer .sectionContainer .firstTitles .titleConta
   max-width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-}
-
-@media only screen and (max-width: 420px) {
-  body .mainContainer .resultsContainer .sectionContainer .firstTitles .titleContainer .titlePoster {
-    width: 180px;
-    height: 270px;
-  }
 }
 
 body .mainContainer .resultsContainer .sectionContainer .firstTitles .titleContainer .titleName {
