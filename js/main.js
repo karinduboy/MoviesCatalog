@@ -68,8 +68,9 @@ const fillModal = (movie) => {
     let summary = createElement('p',['summary'],'',movie.overview)
     let releaseDate = createElement('p',['modalText'],'',formatDate)
     let rating = createElement('p',['rating'],'',movie.vote_average)
-    let modalPoster = document.getElementById("modalPoster").src=(`https://image.tmdb.org/t/p/w370_and_h556_bestv2${movie.poster_path}`)
-    let backImage = document.getElementById('backImage').src=(`https://image.tmdb.org/t/p/w300${movie.backdrop_path}`)
+    let poster = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${movie.poster_path}`
+    let modalPoster = document.getElementById("modalPoster").src=(poster)
+    let backImage = document.getElementById('backImage').src=(`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`)
     setChilds(container, [modalTitle])
     setChilds(container, [subtitle])
     setChilds(detailsContainer, [summary])
@@ -84,7 +85,7 @@ const fillModal = (movie) => {
     setChilds(detailsContainer, [releaseDate])
     setChilds(container, [rating])
     setChilds(container, [modalPoster])
-    setChilds(container, [backImage])
+    setChilds(detailsContainer, [backImage])
     
 }
 
