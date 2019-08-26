@@ -60,6 +60,7 @@ const fillModal = (movie) => {
     container.innerHTML = ''
     let detailsContainer = setNode('detailsSection')
     detailsContainer.innerHTML = ''
+    let posterDiv = setNode('posterDiv')
     let dateInfo = movie.release_date
     let formatDate = moment(dateInfo).format("MMM Do YY")
     let onlyYear = moment(dateInfo).format("YYYY")
@@ -84,7 +85,8 @@ const fillModal = (movie) => {
     setChilds(detailsContainer, [releaseP])
     setChilds(detailsContainer, [releaseDate])
     setChilds(container, [rating])
-    setChilds(container, [modalPoster])
+    //setChilds(container, [modalPoster])
+    setChilds(posterDiv, [modalPoster])
     setChilds(detailsContainer, [backImage])
     
 }
@@ -96,7 +98,9 @@ const printCategoryResults = (movies,categoryNode) => {
         let movieImg = createElement('img',[ 'titlePoster' ]);
         movieImg.src = `${apiConf.images.base_url}/w342/${movie.poster_path}`;
         movieItem.setAttribute('onclick','modal(this.id)'); //ojo hacer funcion que asigne funcionalidad a los eventos
-        let movieName = createElement('p',[ 'titleName' ],'',movie.title);
+        let dateInfo = movie.release_date
+        let onlyYear = moment(dateInfo).format("YYYY")
+        let movieName = createElement('p',[ 'titleName' ],'',`${movie.title} (${onlyYear})`);
         setChilds(movieItem,[movieImg,movieName])
         setChilds(categoryNode,[movieItem])
     })
@@ -131,7 +135,9 @@ const printQueryResults = (movies) => {
         let moviePoster = createElement('img',['titlePoster'],mov)
 		moviePoster.src = `https://image.tmdb.org/t/p/w185${mov.poster_path}`
         moviePoster.href = '#';
-        let movieTitle = createElement('p',['titleName'],'',mov.title)
+        let dateInfo = mov.release_date
+        let onlyYear = moment(dateInfo).format("YYYY")
+        let movieTitle = createElement('p',['titleName'],'',`${mov.title} (${onlyYear})`)
         moviePoster.onclick = () => modal(mov.id);
         setChilds(divPosters,[moviePoster,movieTitle])
         setChilds(searchResults,[divPosters])
@@ -139,28 +145,13 @@ const printQueryResults = (movies) => {
 	});   
 };
 
-/*
-const fillModal = (movieId) => {
-    getCategoryMovieResults()
-    //return movieId
-    //console.log(movieId)
-    /*
-    movie.forEach(mov => {
-        let titleContainer = setNode("modalMovieTitle")
-        let modalTitle = createElement("p", ["modalTitle"],"", mov.title)
-        setChilds(titleContainer, [modalTitle])
-    })
-    
-    
-    
-}*/
 
 //modal
-const modal = async (movieId) => {
+const modal = (movieId) => {
     let activeModal = document.getElementById('activeModal')
     activeModal.classList.remove('modal')
     activeModal.classList.add('activeModal')
-    await searchSingleMovieData(movieId);
+    searchSingleMovieData(movieId);
 };
     
 const closeModal = () => {

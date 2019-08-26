@@ -380,7 +380,7 @@ body{
         z-index: 105;
         height: 100vh;
         .modalContainer{
-            width: 750px;
+            width: 746px;
             height: 93%;
             position: relative;
             z-index: 106;
@@ -388,6 +388,14 @@ body{
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
+            @media only screen and ( max-width: $tablet){
+                width: 83%;
+                height: 99%;
+            }
+            @media only screen and ( max-width: $mobile) {
+                width: 100%;
+                height: 98%;
+            }
             .topModal{
                 height: 280px;
                 position: relative;
@@ -411,6 +419,9 @@ body{
                         &:hover{
                             transform: scale(1.2)
                         }
+                        @media only screen and ( max-width: $mobile){
+                            margin: 10px;
+                        }
                     }
                 }
                 .modalMovieTitle{
@@ -418,6 +429,13 @@ body{
                     top: 35%;
                     right: 3%;
                     width: 400px;
+                    @media only screen and ( max-width: $tablet){
+                        //right: 10%;
+                        width: 90%;
+                    }
+                    @media only screen and ( max-width: $mobile){
+                        left: 6%;
+                    }
                     p{
                         font-size: 35px;
                         font-weight: bold;
@@ -439,6 +457,9 @@ body{
                         border-radius: 50%;
                         padding: 4%;
                         margin-top: 10px;
+                        @media only screen and ( max-width: $mobile){
+                            margin-right: 5%;
+                        }
                     }
                 }
             }
@@ -447,28 +468,48 @@ body{
                 position: absolute;
                 top: 15%;
                 left: 5%;
+                transform: scale(1);
+                @media only screen and ( max-width: $tablet){
+                    display: none;
+                }
+                @media only screen and ( max-width: $mobile){
+                    display: none;
+                }
             }
             .bottomModal{
                 width: 100%;
                 position: absolute;
                 min-height: 0;
                 .movieDetails{
-                    float: right;
-                    position: relative;
-                    right: 3%;
-                    width: 400px;
-                    .summary{
-                        margin-top: 5%;
-                        margin-bottom: 1%;
-                        line-height: 160%;
-                        font-size: 14px;
-                    }
                     .detailsSection{
+                        float: right;
+                        position: relative;
+                        right: 3%;
+                        width: 400px;
+                        @media only screen and ( max-width: $tablet){
+                            width: 90%;
+                            float: left;
+                            left: 5%;
+                        }
+                        @media only screen and ( max-width: $mobile){
+                            width: 400px;
+                            float: left;
+                            padding-right: 14px;
+                        }
+                        .summary{
+                            margin-top: 5%;
+                            margin-bottom: 1%;
+                            line-height: 160%;
+                            font-size: 14px;
+                            @media only screen and ( max-width: $tablet){
+                                margin-top: 3%;
+                            }
+                        }
                         .modalColorTitles{
                             color: $ada;
                             font-size: 20px;
                             margin-bottom: 2%;
-                            margin-top: 2%;
+                            margin-top: 2.5%;
                         }
                         .modalText{
                             display: inline;
