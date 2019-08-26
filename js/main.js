@@ -18,20 +18,14 @@ const getCategoryMovieResults = (category) => {
         .then ( (res => moviesByCategory = res.results))
 };
 
-const searchSingleMovieData = (movieId) => {
-    fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`)
-    .then ( (res) => res.json())
-    //.then ( (res) => fillModal(res) )
-    .then (res => console.log(res))
-}
 
 // FUNCIONES UTILITARIAS
 // FU: creacion de elementos en pantalla
-const createElement = (tag,elemClasses,elementId='',text='') => {
+const createElement = (tag,elemClasses,elementId='',text) => {
     let element = document.createElement(tag);
     elemClasses.forEach( eClass => element.classList.add(eClass))
     element.id = elementId
-    element.innerText = text
+    element.innerText = `${text}`
     return element
 };
 
@@ -57,14 +51,42 @@ const searchHomeCategoryMovies = (category,categoryNode) => {
 const searchSingleMovieData = (movieId) => {
     fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`)
     .then ((res) => res.json())
-    .then ((res) => console.log(res))
+    .then ((res) =>  fillModal(res))
 };
 
-// const fillModal = (movie) => {
-//     let container = setNode('modalMovieTitle');
-//     let modalTitle = createElement('p',['modalTitle'],'',movie.title)
-//     // setChilds()
-// }
+const fillModal = (movie) => {
+    console.log(movie)
+    let container = setNode('modalMovieTitle');
+    container.innerHTML = ''
+    let detailsContainer = setNode('detailsSection')
+    detailsContainer.innerHTML = ''
+    let dateInfo = movie.release_date
+    let formatDate = moment(dateInfo).format("MMM Do YY")
+    let onlyYear = moment(dateInfo).format("YYYY")
+    let modalTitle = createElement('p',['modalTitle'],'',`${movie.title} (${onlyYear})`)
+    let subtitle = createElement('span',["modalSubtitle"],'',movie.tagline)
+    let summary = createElement('p',['summary'],'',movie.overview)
+    let releaseDate = createElement('p',['modalText'],'',formatDate)
+    let rating = createElement('p',['rating'],'',movie.vote_average)
+    let modalPoster = document.getElementById("modalPoster").src=(`https://image.tmdb.org/t/p/w370_and_h556_bestv2${movie.poster_path}`)
+    let backImage = document.getElementById('backImage').src=(`https://image.tmdb.org/t/p/w300${movie.backdrop_path}`)
+    setChilds(container, [modalTitle])
+    setChilds(container, [subtitle])
+    setChilds(detailsContainer, [summary])
+    let genreP = createElement('p',['modalColorTitles'],'',`Genres: `)
+    setChilds(detailsContainer, [genreP])
+    movie.genres.forEach(gen => {
+        let genres = createElement('p',['modalText'],'',`${gen.name}. `)
+        setChilds(detailsContainer, [genres])
+    })
+    let releaseP = createElement('p',['modalColorTitles'],'',`Release date: `)
+    setChilds(detailsContainer, [releaseP])
+    setChilds(detailsContainer, [releaseDate])
+    setChilds(container, [rating])
+    setChilds(container, [modalPoster])
+    setChilds(container, [backImage])
+    
+}
 
 // muestra en pantalla los resultados de las categorías
 const printCategoryResults = (movies,categoryNode) => {
@@ -72,13 +94,8 @@ const printCategoryResults = (movies,categoryNode) => {
         let movieItem = createElement('a',[ 'titleContainer' ],movie.id);
         let movieImg = createElement('img',[ 'titlePoster' ]);
         movieImg.src = `${apiConf.images.base_url}/w342/${movie.poster_path}`;
-<<<<<<< HEAD
-        movieItem.setAttribute("onclick", "modal(this.id)"); //ojo hacer funcion que asigne funcionalidad a los eventos
-        let movieName = createElement('p',[ 'titleName' ],{},movie.title);
-=======
         movieItem.setAttribute('onclick','modal(this.id)'); //ojo hacer funcion que asigne funcionalidad a los eventos
         let movieName = createElement('p',[ 'titleName' ],'',movie.title);
->>>>>>> 43da80a4d5f3a06596214d2d36afa017412bc5ab
         setChilds(movieItem,[movieImg,movieName])
         setChilds(categoryNode,[movieItem])
     })
@@ -142,11 +159,7 @@ const modal = async (movieId) => {
     let activeModal = document.getElementById('activeModal')
     activeModal.classList.remove('modal')
     activeModal.classList.add('activeModal')
-<<<<<<< HEAD
-    await searchSingleMovieData(movieId)
-=======
     await searchSingleMovieData(movieId);
->>>>>>> 43da80a4d5f3a06596214d2d36afa017412bc5ab
 };
     
 const closeModal = () => {
