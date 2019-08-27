@@ -368,8 +368,6 @@ body .mainContainer .frontImage {
           justify-content: center;
   text-align: center;
   position: relative;
-  -webkit-box-shadow: 5px 3px 5px rgba(8, 28, 36, 0.7);
-          box-shadow: 5px 3px 5px rgba(8, 28, 36, 0.7);
 }
 
 @media only screen and (max-width: 900px) {
@@ -589,8 +587,8 @@ body .mainContainer .resultsContainer .firstTitles .titleContainer .titleName :h
 }
 
 body .resultsContainer a.titleContainer:hover .titlePoster {
-  -webkit-box-shadow: 0 2px 2px #081C24;
-          box-shadow: 0 2px 2px #081C24;
+  -webkit-box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 26px 0 rgba(0, 0, 0, 0.19);
+          box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 26px 0 rgba(0, 0, 0, 0.19);
 }
 
 body .resultsContainer a.titleContainer:hover .titlePoster p.titleName {

@@ -250,7 +250,7 @@ body{
             justify-content: center;
             text-align: center;
             position: relative;
-            box-shadow: 5px 3px 5px $trsDB;
+            // box-shadow: 5px 3px 5px $trsDB;box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 26px 0 rgba(0, 0, 0, 0.19);
             @media only screen and (max-width: 900px) {
                 height: 40vh;
             }
@@ -395,7 +395,7 @@ body{
         }
     }
     .resultsContainer a.titleContainer:hover .titlePoster{
-        box-shadow: 0 2px 2px $darkBlue;
+        box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 26px 0 rgba(0, 0, 0, 0.19);
     }
 
     .resultsContainer a.titleContainer:hover .titlePoster p.titleName{
