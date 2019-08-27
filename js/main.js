@@ -3,6 +3,7 @@ var apiKey = "c6f4b7af00ff89712efe89669fe19897";
 var baseUrl, moviesByCategory, apiConf, totalItems, titleContainer, container;
 var category = '';
 const categoryList = ['popular','top_rated','upcoming','now_playing'];
+var resultType = ['Home','Query','Category']
 // var 
 
 // traemos la configuracion necesaria para usar las url de la API 
@@ -12,10 +13,10 @@ const getApiConf = () => {
         .then( res => apiConf = res )
 };
 
-const getCategoryMovieResults = (category) => {
+const getCategoryMovieResults = (category,node,resultsType) => {
     fetch(`https://api.themoviedb.org/3/movie/${category}?api_key=${apiKey}`)
     .then ( res => res.json())
-        .then ( res => moviesByCategory = res.results)
+        .then ( moviesByCategory => printCategoryResults(moviesByCategory,node,resultsType))
 };
 
 // FUNCIONES UTILITARIAS
@@ -40,10 +41,10 @@ const setNode = (nodeId) => {
 };
 
 // busca las peliculas de las categorias del home
-const searchHomeCategoryMovies = (category,categoryNode) => {
+const searchHomeCategoryMovies = (category,categoryNode,resultType) => {
 	fetch(`https://api.themoviedb.org/3/movie/${category}?api_key=${apiKey}`)
 		.then((res) => res.json())
-		.then((res) => printCategoryResults((res.results.slice(0,5)),categoryNode));
+		.then((res) => printCategoryResults(res,categoryNode,resultType));
 };
 
 // busca la info de una peli
@@ -60,8 +61,11 @@ const searchSingleMovieData = (movieId) => {
 // }
 
 // muestra en pantalla los resultados de las categorías
-const printCategoryResults = (movies,categoryNode) => {
-    movies.forEach( movie => {
+const printCategoryResults = (movies,categoryNode,resultType) => {
+    // setTopLine(movies,categoryNode,resultType)
+    debugger;
+    var movieItems = ( resultType === 'Home' ) ? ( movies.results.slice(0,5) ) : ( movies.results );
+    movieItems.forEach( movie => {
         let movieItem = createElement('a',[ 'titleContainer' ],movie.id);
         let movieImg = createElement('img',[ 'titlePoster' ]);
         movieImg.src = `${apiConf.images.base_url}/w342/${movie.poster_path}`;
@@ -76,9 +80,14 @@ const printCategoryResults = (movies,categoryNode) => {
 const setHomeMovieItems = async (categoryList) => {
     categoryList.forEach(async (category) => {
         let categoryMoviesContainer = setNode(`${category}Results`)
-        await searchHomeCategoryMovies(category,categoryMoviesContainer);
+        await searchHomeCategoryMovies(category,categoryMoviesContainer,'Home');
     })
 };
+
+const setCategoryMovieItems = async (category,containerId) => {
+    let container = setNode(containerId);
+    await getCategoryMovieResults(category,container,'Category')
+}
 
 // Funcion que realiza los request del search 
 const handleSearch = () => {
@@ -87,26 +96,27 @@ const handleSearch = () => {
 		lastRequest = query;
 		fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`)
             .then((res) => res.json())
-			.then((res) => printQueryResults(res.results));
-	}
+			.then((res) => printQueryResults(res.results,query));
+	};
 };
 
 // funcion que imprime los resultados de la busqueda (OPTIMIZAR CON LAS FUNCIONES DE CREACION DE ELEMENTOS)
 const printQueryResults = (movies) => {
 	let container = setNode('resultsContainer');
     container.innerHTML = '';
-    let searchResults = createElement('section',['searchResults'])
-    let divPosters = createElement('div',['titleContainer'])
+    let searchResults = createElement('section',['searchResults']);
+    // let topLinecontainer = createElement ('div',['topLine'],'',movies.)
 	movies.forEach((mov) => {
-        let moviePoster = createElement('img',['titlePoster'],mov)
-		moviePoster.src = `https://image.tmdb.org/t/p/w185${mov.poster_path}`
-        moviePoster.href = '#';
-        let movieTitle = createElement('p',['titleName'],'',mov.title)
-        moviePoster.onclick = () => modal(mov.id);
-        setChilds(divPosters,[moviePoster,movieTitle])
-        setChilds(searchResults,[divPosters])
+        let divPoster = createElement('a',['titleContainer'],mov.id);
+        divPoster.href = '#';
+        let moviePoster = createElement('img',['titlePoster']);
+		moviePoster.src = `${apiConf.images.base_url}/w342/${mov.poster_path}`;
+        let movieTitle = createElement('p',['titleName'],'',mov.title);
+        moviePoster.setAttribute('onclick',`modal(this.id)`)
+        setChilds(divPoster,[moviePoster,movieTitle])
+        setChilds(searchResults,[divPoster])
         setChilds(container,[searchResults])
-	});   
+	})
 };
 
 //modal
