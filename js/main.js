@@ -55,7 +55,7 @@ const searchSingleMovieData = (movieId) => {
 };
 
 const fillModal = (movie) => {
-    console.log(movie)
+    //console.log(movie)
     let container = setNode('modalMovieTitle');
     container.innerHTML = ''
     let detailsContainer = setNode('detailsSection')
