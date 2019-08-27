@@ -70,8 +70,10 @@ const printCategoryResults = (movies,categoryNode,resultType) => {
         let movieImg = createElement('img',[ 'titlePoster' ]);
         movieImg.src = `${apiConf.images.base_url}/w342/${movie.poster_path}`;
         movieItem.setAttribute('onclick','modal(this.id)'); //ojo hacer funcion que asigne funcionalidad a los eventos
-        let movieName = createElement('p',[ 'titleName' ],'',movie.title);
-        setChilds(movieItem,[movieImg,movieName])
+        let dateInfo = movie.release_date
+        let onlyYear = moment(dateInfo).format("YYYY")
+        let movieTitle = createElement('p',['titleName'],'',`${movie.title} (${onlyYear})`)
+        setChilds(movieItem,[movieImg,movieTitle])
         setChilds(categoryNode,[movieItem])
     })
 };
@@ -111,8 +113,10 @@ const printQueryResults = (movies) => {
         divPoster.href = '#';
         let moviePoster = createElement('img',['titlePoster']);
 		moviePoster.src = `${apiConf.images.base_url}/w342/${mov.poster_path}`;
-        let movieTitle = createElement('p',['titleName'],'',mov.title);
         moviePoster.setAttribute('onclick',`modal(this.id)`)
+        let dateInfo = mov.release_date
+        let onlyYear = moment(dateInfo).format("YYYY")
+        let movieTitle = createElement('p',['titleName'],'',`${mov.title} (${onlyYear})`)
         setChilds(divPoster,[moviePoster,movieTitle])
         setChilds(searchResults,[divPoster])
         setChilds(container,[searchResults])
