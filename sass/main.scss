@@ -223,9 +223,6 @@ body{
                         height: 20px;
                         margin-bottom: 10px;
                         fill: $trsDB;
-                        :hover{
-                            fill: $darkBlue;
-                        }
                     }
                     @media only screen and (max-width: $tablet){
                         border-left: 1.5px solid #f8f8f8;
@@ -254,7 +251,6 @@ body{
             justify-content: center;
             text-align: center;
             position: relative;
-            // box-shadow: 5px 3px 5px $trsDB;box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 26px 0 rgba(0, 0, 0, 0.19);
             @media only screen and (max-width: 900px) {
                 height: 40vh;
             }
@@ -296,8 +292,30 @@ body{
             padding: 0 3%;
             margin: 2.5% 0;
             width: 100%;
+            // display: grid;
+            // grid-template: 4 / 1;
             @media only screen and (max-width: $mobile) {
                 padding: 0 2.5%;
+            }
+            .searchResults{
+                display: flex;
+                margin: 5%;
+                justify-content: space-between;
+                flex-wrap: nowrap;
+                .titleContainer{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    //flex-wrap: wrap;
+                    padding: 20px;
+                    .titlePoster{
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin-left: 20px;
+                        flex-wrap: wrap;
+                    }
+                }
             }
             .sectionContainer{
                 margin: 0 0 5% 0;
@@ -319,37 +337,27 @@ body{
                         text-decoration: none;
                     }
                 }
-            }
-            .searchResults{
-                display: grid;
-                grid-gap: 4%;
-                text-align: left;
-                grid-template: 4 / 5;
-                grid-template-columns: repeat(5, 17%);
-                // grid-template-rows: repeat(4, 90% 10%);
-                margin: auto;
-                @media only screen and (max-width: $tablet) {
-                    grid-template: 10 / 2;
-                    grid-template-columns: repeat(2, 48%);
-                    // grid-template-rows: repeat(10, 90% 10%);   
-                    overflow: hidden; 
-                }
-                @media only screen and (max-width: $mobile) {
-                    grid-template: 20 / 1;
-                    // grid-template-rows: repeat(20, 90% 10%);  
-                }
-                .titleContainer{
-                    padding: 0 0 2% 0;
-                    // display: subgrid;
-                    // grid-template-rows: 1 span 2;
-                    .titlePoster{
-                        background-color: #444444;
-                        width: 100%;
-                        // max-width: 100%;
-                        height: 90%;
-                        object-fit: cover;
+                .firstTitles{
+                    display: grid;
+                    grid-gap: 4%;
+                    // align-items: center;
+                    // justify-content: space-between;
+                    text-align: left;
+                    grid-template: 2 / 5;
+                    grid-template-columns: repeat(5, 17%);
+                    // grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                    grid-template-rows: 90% 10%;
+                    margin: auto;
+                    @media only screen and (max-width: $tablet) {
+                        grid-template: 3 / 2;
+                        grid-template-columns: repeat(2, 48%);
+                        grid-template-rows: auto auto auto;   
+                        overflow: hidden; 
                     }
-<<<<<<< HEAD
+                    @media only screen and (max-width: $mobile) {
+                        grid-template: 5 / 1;
+                        grid-template-rows: auto;  
+                    }
                     .titleContainer{
                         padding: 0 0 2% 0;
                         // display: subgrid;
@@ -371,66 +379,12 @@ body{
                         .titleName{
                             padding: 10% 0 0 0;
                             color: $trsDB;
-=======
-                    .titleName{
-                        padding: 10% 0 0 0;
-                        color: $trsDB;
-                        width: 100%;
-                        height: 10%;
-                        text-decoration: none;
-                        :hover{
-                            color: black;
->>>>>>> a48f71cb607c7ad43b2bb65d45907dc13a9df008
                         }
-                    }
-                }   
-            }
-            .firstTitles{
-                display: grid;
-                grid-gap: 4%;
-                text-align: left;
-                grid-template: 2 / 5;
-                grid-template-columns: repeat(5, 17%);
-                grid-template-rows: 90% 10%;
-                // margin: auto;
-                @media only screen and (max-width: $tablet) {
-                    grid-template: 6 / 2;
-                    grid-template-columns: repeat(2, 48%);
-                    grid-template-rows: repeat(3, 90% 10%);   
-                    overflow: hidden; 
+                    }   
                 }
-                @media only screen and (max-width: $mobile) {
-                    grid-template: 10 / 1;
-                    grid-template-rows: repeat(5, 90% 10%);  
-                }
-                .titleContainer{
-                    padding: 0 0 2% 0;
-                    .titlePoster{
-                        background-color: #444444;
-                        width: 100%;
-                        max-width: 100%;
-                        object-fit: cover;
-                    }
-                    .titleName{
-                        padding: 10% 0 0 0;
-                        color: $trsDB;
-                        :hover{
-                            color: black;
-                        }
-                    }
-                }   
             }
         }
     }
-    .resultsContainer a.titleContainer:hover .titlePoster{
-        box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 26px 0 rgba(0, 0, 0, 0.19);
-    }
-
-    .resultsContainer a.titleContainer:hover .titlePoster p.titleName{
-        color: $darkBlue;
-        font-weight: bold;
-    }
-
     .activeModal{
         width: 100%;
         top:0;

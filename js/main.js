@@ -54,52 +54,6 @@ const searchSingleMovieData = (movieId) => {
     .then ((res) =>  fillModal(res))
 };
 
-const fillModal = (movie) => {
-    //console.log(movie)
-    let container = setNode('modalMovieTitle');
-    container.innerHTML = ''
-    let detailsContainer = setNode('detailsSection')
-    detailsContainer.innerHTML = ''
-    let backImageContainer = setNode('backImage')
-    backImageContainer = ''
-    let dateInfo = movie.release_date
-    let formatDate = moment(dateInfo).format("MMM Do YY")
-    let onlyYear = moment(dateInfo).format("YYYY")
-    let modalTitle = createElement('p',['modalTitle'],'',`${movie.title} (${onlyYear})`)
-    let subtitle = createElement('span',["modalSubtitle"],'',movie.tagline)
-    let summary = createElement('p',['summary'],'',movie.overview)
-    let releaseDate = createElement('p',['modalText'],'',formatDate)
-    let rating = createElement('p',['rating'],'',movie.vote_average)
-    let poster = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${movie.poster_path}`
-    modalPoster = document.getElementById("modalPoster").src=(poster)
-    //let modalPoster = document.createElement('img')
-    //modalPoster.classList.add('modalPoster')
-    //modalPoster.src=(poster)
-    //let backDrop = `https://image.tmdb.org/t/p/w780${movie.backdrop_path}`
-    let backImage = document.getElementById('backImage').src=(`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`)
-    //let backImage = document.createElement('img')
-    //backImage.classList.add('backImage')
-    //backImage.src = (backDrop)
-    setChilds(container, [modalTitle])
-    setChilds(container, [subtitle])
-    setChilds(detailsContainer, [summary])
-    let genreP = createElement('p',['modalColorTitles'],'',`Genres: `)
-    setChilds(detailsContainer, [genreP])
-    movie.genres.forEach(gen => {
-        let genres = createElement('p',['modalText'],'',`${gen.name}. `)
-        setChilds(detailsContainer, [genres])
-    })
-    let releaseP = createElement('p',['modalColorTitles'],'',`Release date: `)
-    setChilds(detailsContainer, [releaseP])
-    setChilds(detailsContainer, [releaseDate])
-    setChilds(container, [rating])
-    //container.appendChild(modalPoster)
-    //backImageContainer.appendChild(backImage)
-    setChilds(container, [modalPoster])
-    setChilds(detailsContainer, [backImage])
-    
-}
-
 // muestra en pantalla los resultados de las categorías
 const printCategoryResults = (movies,categoryNode) => {
     movies.forEach( movie => {
@@ -114,6 +68,44 @@ const printCategoryResults = (movies,categoryNode) => {
         setChilds(categoryNode,[movieItem])
     })
 };
+
+const fillModal = (movie) => {
+    let container = setNode('modalMovieTitle');
+    container.innerHTML = ''
+    let detailsContainer = setNode('detailsSection')
+    detailsContainer.innerHTML = ''
+    backImageContainer = ''
+    let dateInfo = movie.release_date
+    let formatDate = moment(dateInfo).format("MMM Do YY")
+    let onlyYear = moment(dateInfo).format("YYYY")
+    let modalTitle = createElement('p',['modalTitle'],'',`${movie.title} (${onlyYear})`)
+    let subtitle = createElement('span',["modalSubtitle"],'',movie.tagline)
+    let summary = createElement('p',['summary'],'',movie.overview)
+    let releaseDate = createElement('p',['modalText'],'',formatDate)
+    let rating = createElement('p',['rating'],'',movie.vote_average)
+    let poster = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${movie.poster_path}`
+    let modalPoster
+    modalPoster = document.getElementById("modalPoster").src=(poster)
+    let backImage = document.getElementById('backImage').src=(`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`)
+    setChilds(container, [modalTitle])
+    setChilds(container, [subtitle])
+    setChilds(detailsContainer, [summary])
+    let genreP = createElement('p',['modalColorTitles'],'',`Genres: `)
+    setChilds(detailsContainer, [genreP])
+    movie.genres.forEach(gen => {
+        let genres = createElement('p',['modalText'],'',`${gen.name}. `)
+        setChilds(detailsContainer, [genres])
+    })
+    let releaseP = createElement('p',['modalColorTitles'],'',`Release date: `)
+    setChilds(detailsContainer, [releaseP])
+    setChilds(detailsContainer, [releaseDate])
+    setChilds(container, [rating])
+    setChilds(container, [modalPoster])
+    setChilds(detailsContainer, [backImage])
+    
+}
+
+
 
 // muestra los elementos del home
 const setHomeMovieItems = async (categoryList) => {
@@ -135,21 +127,21 @@ const handleSearch = () => {
 };
 
 // funcion que imprime los resultados de la busqueda (OPTIMIZAR CON LAS FUNCIONES DE CREACION DE ELEMENTOS)
-const printQueryResults = (movies) => {
+const printQueryResults = (movies, query) => {
 	let container = setNode('resultsContainer');
     container.innerHTML = '';
     let searchResults = createElement('section',['searchResults'])
-    let divPosters = createElement('div',['titleContainer'])
 	movies.forEach((mov) => {
-        let moviePoster = createElement('img',['titlePoster'],mov)
-		moviePoster.src = `https://image.tmdb.org/t/p/w185${mov.poster_path}`
-        moviePoster.href = '#';
+        let divPoster = createElement('a',['titleContainer'],mov.id)
+        divPoster.href = '#';
+        let moviePoster = createElement('img',['titlePoster'])
+        moviePoster.src = `${apiConf.images.base_url}/w342/${mov.poster_path}`
+        moviePoster.setAttribute('onclick','modal(this.id)')
         let dateInfo = mov.release_date
         let onlyYear = moment(dateInfo).format("YYYY")
         let movieTitle = createElement('p',['titleName'],'',`${mov.title} (${onlyYear})`)
-        moviePoster.onclick = () => modal(mov.id);
-        setChilds(divPosters,[moviePoster,movieTitle])
-        setChilds(searchResults,[divPosters])
+        setChilds(divPoster,[moviePoster,movieTitle])
+        setChilds(searchResults,[divPoster])
         setChilds(container,[searchResults])
 	});   
 };
@@ -173,6 +165,7 @@ const closeModal = () => {
 const toggleMenu = () => {
     let leftNav = document.getElementById("leftNav")
     leftNav.classList.toggle("openLeftNav")
+    leftNav.classList.toggle('closed')
 };
 
 //inicializamos el home
