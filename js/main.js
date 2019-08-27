@@ -60,7 +60,8 @@ const fillModal = (movie) => {
     container.innerHTML = ''
     let detailsContainer = setNode('detailsSection')
     detailsContainer.innerHTML = ''
-    let posterDiv = setNode('posterDiv')
+    let backImageContainer = setNode('backImage')
+    backImageContainer = ''
     let dateInfo = movie.release_date
     let formatDate = moment(dateInfo).format("MMM Do YY")
     let onlyYear = moment(dateInfo).format("YYYY")
@@ -70,8 +71,15 @@ const fillModal = (movie) => {
     let releaseDate = createElement('p',['modalText'],'',formatDate)
     let rating = createElement('p',['rating'],'',movie.vote_average)
     let poster = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${movie.poster_path}`
-    let modalPoster = document.getElementById("modalPoster").src=(poster)
+    modalPoster = document.getElementById("modalPoster").src=(poster)
+    //let modalPoster = document.createElement('img')
+    //modalPoster.classList.add('modalPoster')
+    //modalPoster.src=(poster)
+    //let backDrop = `https://image.tmdb.org/t/p/w780${movie.backdrop_path}`
     let backImage = document.getElementById('backImage').src=(`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`)
+    //let backImage = document.createElement('img')
+    //backImage.classList.add('backImage')
+    //backImage.src = (backDrop)
     setChilds(container, [modalTitle])
     setChilds(container, [subtitle])
     setChilds(detailsContainer, [summary])
@@ -85,8 +93,9 @@ const fillModal = (movie) => {
     setChilds(detailsContainer, [releaseP])
     setChilds(detailsContainer, [releaseDate])
     setChilds(container, [rating])
-    //setChilds(container, [modalPoster])
-    setChilds(posterDiv, [modalPoster])
+    //container.appendChild(modalPoster)
+    //backImageContainer.appendChild(backImage)
+    setChilds(container, [modalPoster])
     setChilds(detailsContainer, [backImage])
     
 }
