@@ -3,6 +3,7 @@ var apiKey = "c6f4b7af00ff89712efe89669fe19897";
 var baseUrl, moviesByCategory, apiConf, totalItems, titleContainer, container, moviesById;
 var category = '';
 const categoryList = ['popular','top_rated','upcoming','now_playing'];
+var resultType = ['Home','Query','Category']
 // var 
 
 // traemos la configuracion necesaria para usar las url de la API 
@@ -12,11 +13,11 @@ const getApiConf = () => {
         .then( res => apiConf = res )
 };
 
-const getCategoryMovieResults = (category) => {
-    fetch(`https://api.themoviedb.org/3/movie/${category}?api_key=${apiKey}`)
-    .then ( res => res.json())
-        .then ( (res => moviesByCategory = res.results))
-};
+// const getCategoryMovieResults = (category,node,resultsType) => {
+//     fetch(`https://api.themoviedb.org/3/movie/${category}?api_key=${apiKey}`)
+//     .then ( res => res.json())
+//         .then ( moviesByCategory => printResults(moviesByCategory,node,resultsType,'',category))
+// };
 
 
 // FUNCIONES UTILITARIAS
@@ -36,15 +37,17 @@ const setChilds = (father, childList) => {
 
 //FU: setear el nodo de  la pantalla donde se crearán los elementos 
 const setNode = (nodeId) => {
-    let container = document.getElementById(nodeId)
+    let container = document.getElementById(nodeId);
+    container.innerHTML=''
     return container
 };
 
+// FUNCIONES PARA FETCH
 // busca las peliculas de las categorias del home
-const searchHomeCategoryMovies = (category,categoryNode) => {
+const getCategoryMovies = (category,categoryNode,resultType) => {
 	fetch(`https://api.themoviedb.org/3/movie/${category}?api_key=${apiKey}`)
 		.then((res) => res.json())
-        .then((res) => printCategoryResults((res.results.slice(0,5)),categoryNode));
+		.then((res) => printResults(res,categoryNode,resultType,'',category));
 };
 
 // busca la info de una peli
@@ -54,19 +57,99 @@ const searchSingleMovieData = (movieId) => {
     .then ((res) =>  fillModal(res))
 };
 
-// muestra en pantalla los resultados de las categorías
-const printCategoryResults = (movies,categoryNode) => {
-    movies.forEach( movie => {
-        let movieItem = createElement('a',[ 'titleContainer' ],movie.id,'');
+// busca las pelis por lo indicado en el input
+const getQueryResults = (query,node) => {
+    fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`)
+            .then((res) => res.json())
+			.then((movies) => printResults(movies,node,'Query',query));
+}
+// var resultTypeVars = {
+//     Home:{
+//         resultType: 'Home',
+//         fetchDir: `https://api.themoviedb.org/3/movie/${category}?api_key=${apiKey}`,
+//         categoryNodeClass: 'firstTitles',
+//         linkText: 'View All...',
+//         linkAction: `searchHomeCategoryMovies(category,categoryNode,'Category')`,
+//         topLineText: {
+//             popular: 'Popular Movies',
+//             top_rated: 'Top Rated Movies',
+//             upcoming: 'Upcoming Movies',
+//             now_playing: 'Now Playing Movies'
+//         },
+//         movieItems: movies.results.slice(0,5),
+//         query:'',
+//         page: ''
+//     },
+//     Category:{
+//         resultType: 'Category',
+//         fetchDir: `https://api.themoviedb.org/3/movie/${category}?api_key=${apiKey}`,
+//         categoryNodeClass: 'searchResults',
+//         linkText: `See all (${movies.total_results}) results`,
+//         linkAction: `searchMovies(category,categoryNode,'Category')`,
+//         topLineText: {
+//             popular: 'Popular Movies',
+//             top_rated: 'Top Rated Movies',
+//             upcoming: 'Upcoming Movies',
+//             now_playing: 'Now Playing Movies'
+//         },
+//         movieItems: movies.results,
+//         query: '',
+//         page: `${movies.page}`
+//     },
+//     Query:{
+//         resultType: 'Query',
+//         fetchDir: `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`,
+//         categoryNodeClass: 'searchResults',
+//         linkText: `See all (${movies.total_results}) results`,
+//         linkAction: `searchMovies(category,categoryNode,'Category')`,
+//         topLineText:`Movies for: "${query}..."`,
+//         movieItems: movies.results,
+//         query: '',
+//         page: `${movies.page}`
+//     }
+// };
+
+const setTopLineResult = (totalResults,categoryNode,topLineText,page,resultType,query,category) => {
+    let linkText = (resultType === 'Home') ? 'View All...' : `${totalResults}`;
+    let onclickAction = ( resultType === 'Home') ? `setMovieItems(${category},${categoryNode},${resultType})` : `setMovieItems(${query},${categoryNode},${resultType})`;
+    let sectionContainer = createElement('section',['sectionContainer']);
+    let topLineContainer = createElement('div',['sectionTopLine']);
+    let sectionName = createElement('h2',['sectionTitle','topLine'],page,topLineText);
+    let viewAllLink = createElement('a',['viewAllLink','topLine'],'',linkText);
+    viewAllLink.href = '#'
+    viewAllLink.setAttribute('onclick',onclickAction)
+    setChilds(topLineContainer,[sectionName,viewAllLink])
+    setChilds(sectionContainer,[topLineContainer])
+    setChilds(categoryNode,[sectionContainer])
+};
+
+// const setMovieItems = (criteria,categoryNode,resultType) = {
+
+// }
+
+// muestra en pantalla los resultados de la busqueda (Home, Categoría y Query)
+const printResults = (movies,node,resultType,query,category) => {
+    let aditionalClass =  (resultType === 'Home') ? 'firstTitles' : 'searchResults';
+    let resultsContainer = createElement('div',[`${category}Results`,aditionalClass]);
+    setChilds(node,[resultsContainer])
+    let topLineText = (query === '' || query) ? `Movies for: "${category}..."`: `Movies with: ${query}...`;
+    setTopLineResult(movies.totalItems,node,topLineText,movies.page,resultType,query,category)
+    var movieItems = ( resultType === 'Home' ) ? ( movies.results.slice(0,5) ) : ( movies.results );
+    printMovieItems(movieItems,node)
+};
+
+const printMovieItems = (movieItems, categoryNode) =>{
+    movieItems.forEach( movie => {
+        let movieItem = createElement('a',[ 'titleContainer' ],movie.id);
         let movieImg = createElement('img',[ 'titlePoster' ]);
         movieImg.src = `${apiConf.images.base_url}/w342/${movie.poster_path}`;
         movieItem.setAttribute('onclick','modal(this.id)'); //ojo hacer funcion que asigne funcionalidad a los eventos
-        let dateInfo = movie.release_date
-        let onlyYear = moment(dateInfo).format("YYYY")
-        let movieName = createElement('p',[ 'titleName' ],'',`${movie.title} (${onlyYear})`);
-        setChilds(movieItem,[movieImg,movieName])
+        let dateInfo = movie.release_date;
+        let onlyYear = moment(dateInfo).format("YYYY");
+        let movieTitle = createElement('p',['titleName'],'',`${movie.title} (${onlyYear})`);
+        setChilds(movieItem,[movieImg,movieTitle])
         setChilds(categoryNode,[movieItem])
-    })
+    });
 };
 
 const fillModal = (movie) => {
@@ -105,47 +188,44 @@ const fillModal = (movie) => {
     
 }
 
-
-
 // muestra los elementos del home
+// FUNCIONES DE SETEO
+// setea la carga de los elemento del home
 const setHomeMovieItems = async (categoryList) => {
+    debugger;
+    var resultsContainer = setNode('resultsContainer');
     categoryList.forEach(async (category) => {
-        let categoryMoviesContainer = setNode(`${category}Results`)
-        await searchHomeCategoryMovies(category,categoryMoviesContainer);
+        // let sectionContainer = createElement('section',['sectionContainer']);
+        // setChilds(resultsContainer,[sectionContainer])
+        await getCategoryMovies(category,resultsContainer,'Home');
     })
 };
 
-// Funcion que realiza los request del search 
-const handleSearch = () => {
+// setea los elementos de cada categoría
+const setCategoryMovieItems = async (category,containerId) => {
+    let container = setNode(containerId);
+    await getCategoryMovies(category,container,'Category')
+}
+
+// Funcion que llama a los fetch del search 
+const handleSearch = async () => {
     let query = event.target.value;
+    let container = setNode('serachResult')
 	if (query.length >= 3 || (event.keyCode === 13 && query !== lastRequest)) {
 		lastRequest = query;
-		fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`)
-            .then((res) => res.json())
-			.then((res) => printQueryResults(res.results));
-	}
+		await getQueryResults(query,node)
+	};
 };
 
 // funcion que imprime los resultados de la busqueda (OPTIMIZAR CON LAS FUNCIONES DE CREACION DE ELEMENTOS)
-const printQueryResults = (movies, query) => {
-	let container = setNode('resultsContainer');
-    container.innerHTML = '';
-    let searchResults = createElement('section',['searchResults'])
-	movies.forEach((mov) => {
-        let divPoster = createElement('a',['titleContainer'],mov.id)
-        divPoster.href = '#';
-        let moviePoster = createElement('img',['titlePoster'])
-        moviePoster.src = `${apiConf.images.base_url}/w342/${mov.poster_path}`
-        moviePoster.setAttribute('onclick','modal(this.id)')
-        let dateInfo = mov.release_date
-        let onlyYear = moment(dateInfo).format("YYYY")
-        let movieTitle = createElement('p',['titleName'],'',`${mov.title} (${onlyYear})`)
-        setChilds(divPoster,[moviePoster,movieTitle])
-        setChilds(searchResults,[divPoster])
-        setChilds(container,[searchResults])
-	});   
-};
-
+// const printQueryResults = (movies,categoryNode,resultType,query,category) => {
+// 	let container = setNode('resultsContainer');
+//     let searchResults = createElement('section',['searchResults']);
+//     setChilds(container,[searchResults])
+//     let topLineText = `Movies for: "${query}..."`;
+//     setTopLineResult(movies.totalResults,searchResults,topLineText,page,query)
+// 	printMovieItems(movies,categoryNode)
+// };
 
 //modal
 const modal = (movieId) => {
