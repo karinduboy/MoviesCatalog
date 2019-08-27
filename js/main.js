@@ -178,7 +178,6 @@ const printMovieItems = (movieItems, categoryNode) =>{
 // FUNCIONES DE SETEO
 // setea la carga de los elemento del home
 const setHomeMovieItems = async (categoryList) => {
-    debugger;
     var resultsContainer = setNode('resultsContainer');
     categoryList.forEach(async (category) => {
         // let sectionContainer = createElement('section',['sectionContainer']);
