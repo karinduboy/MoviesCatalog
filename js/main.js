@@ -114,7 +114,24 @@ const fillModal = (movie) => {
     
 }
 
+<<<<<<< HEAD
 
+=======
+// muestra en pantalla los resultados de las categorías
+const printCategoryResults = (movies,categoryNode) => {
+    movies.forEach( movie => {
+        let movieItem = createElement('a',[ 'titleContainer' ],movie.id,'');
+        let movieImg = createElement('img',[ 'titlePoster' ]);
+        movieImg.src = `${apiConf.images.base_url}/w342/${movie.poster_path}`;
+        movieItem.setAttribute('onclick','modal(this.id)'); //ojo hacer funcion que asigne funcionalidad a los eventos
+        let dateInfo = movie.release_date
+        let onlyYear = moment(dateInfo).format("YYYY")
+        let movieName = createElement('p',[ 'titleName' ],'',`${movie.title} (${onlyYear})`);
+        setChilds(movieItem,[movieImg,movieName])
+        setChilds(categoryNode,[movieItem])
+    })
+};
+>>>>>>> 85543a9dc061eed0687950a6c117084e6340daff
 
 // muestra los elementos del home
 const setHomeMovieItems = async (categoryList) => {
