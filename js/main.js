@@ -58,6 +58,7 @@ const searchSingleMovieData = (movieId) => {
 
 // busca las pelis por lo indicado en el input
 const getQueryResults = (query,node) => {
+    debugger;
     fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`)
             .then((res) => res.json())
 			.then((movies) => printResults(movies,node,'Query',query));
@@ -113,7 +114,7 @@ const setTopLineResult = (totalResults,categoryNode,topLineText,page,resultType,
     let onclickAction = ( resultType === 'Home') ? `setMovieItems(${category},${categoryNode},${resultType})` : `setMovieItems(${query},${categoryNode},${resultType})`;
     let sectionContainer = createElement('section',['sectionContainer']);
     let topLineContainer = createElement('div',['sectionTopLine']);
-    let sectionName = createElement('h2',['sectionTitle','topLine'],page,topLineText);
+    let sectionName = createElement('h2',['sectionTitle','topLine'],page,setTopLineText(resultType,category,query));
     let viewAllLink = createElement('a',['viewAllLink','topLine'],'',linkText);
     viewAllLink.href = '#'
     viewAllLink.setAttribute('onclick',onclickAction)
@@ -127,14 +128,37 @@ const setTopLineResult = (totalResults,categoryNode,topLineText,page,resultType,
 // }
 
 // muestra en pantalla los resultados de la busqueda (Home, Categoría y Query)
+// const setTopLineText = (resultType) => {
+//     if (resultType )
+// } 
+const setTopLineText = (resultsType,category,query) => {
+    const searchTypes = {
+        Home: {
+            popular : "Popular Movies",
+            top_rated : 'Top Rated Movies',
+            upcoming : "Upcomming Movies",
+            now_playing : "Now Playing Movies"
+        },
+        Category: {
+            popular : "Popular Movies",
+            top_rated : 'Top Rated Movies',
+            upcoming : "Upcomming Movies",
+            now_playing : "Now Playing Movies"
+        },
+        Query: `Movies with: ${query}...`
+    }
+    return topLineText = (resultsType === 'Query') ? searchTypes[resultsType] : searchTypes[resultsType][category];
+}
+
 const printResults = (movies,node,resultType,query,category) => {
-    let aditionalClass =  (resultType === 'Home') ? 'firstTitles' : 'searchResults';
-    let resultsContainer = createElement('div',[`${category}Results`,aditionalClass]);
-    setChilds(node,[resultsContainer])
-    let topLineText = (query === '' || query) ? `Movies for: "${category}..."`: `Movies with: ${query}...`;
+    let containerClass =  (resultType === 'Home') ? ['firstTitles'] : ['searchResults'];
+    let containerId =  (resultType === 'Home') ? `${category}Results` : 'searchResults';
+    let ItemsContainer = createElement('div',containerClass,containerId);
+    setChilds(node,[ItemsContainer])
+    let topLineText = setTopLineText(resultType,category,query)
     setTopLineResult(movies.totalItems,node,topLineText,movies.page,resultType,query,category)
     var movieItems = ( resultType === 'Home' ) ? ( movies.results.slice(0,5) ) : ( movies.results );
-    printMovieItems(movieItems,node)
+    printMovieItems(movieItems,ItemsContainer)
 };
 
 const printMovieItems = (movieItems, categoryNode) =>{
@@ -172,7 +196,8 @@ const setCategoryMovieItems = async (category,containerId) => {
 // Funcion que llama a los fetch del search 
 const handleSearch = async () => {
     let query = event.target.value;
-    let container = setNode('serachResult')
+    let node = setNode('resultsContainer');
+    // let searchContainer =  createElement('section')
 	if (query.length >= 3 || (event.keyCode === 13 && query !== lastRequest)) {
 		lastRequest = query;
 		await getQueryResults(query,node)
