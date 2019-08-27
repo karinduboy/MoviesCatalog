@@ -103,7 +103,7 @@ const fillModal = (movie) => {
 // muestra en pantalla los resultados de las categorías
 const printCategoryResults = (movies,categoryNode) => {
     movies.forEach( movie => {
-        let movieItem = createElement('a',[ 'titleContainer' ],movie.id);
+        let movieItem = createElement('a',[ 'titleContainer' ],movie.id,'');
         let movieImg = createElement('img',[ 'titlePoster' ]);
         movieImg.src = `${apiConf.images.base_url}/w342/${movie.poster_path}`;
         movieItem.setAttribute('onclick','modal(this.id)'); //ojo hacer funcion que asigne funcionalidad a los eventos
