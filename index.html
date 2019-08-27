@@ -10,9 +10,8 @@
     <link rel='icon' href="assets2/favicon.ico" type="image/x-icon">
     <link href="css/transformicons.css" rel="stylesheet" type="text/css" media="screen">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <script src="https://unpkg.com/moment"></script>
     <script src="js/transformicons.js" type="text/javascript"></script>
-    
+    <script src="https://unpkg.com/moment"></script>
     <script src="js/main.js" type="text/javascript"></script>
     <title>Ada Movies</title>
 </head>
@@ -129,26 +128,20 @@
     <section class="modal" id="activeModal">
         <div class="modalContainer">
             <div class="topModal">
-                <div class="backImage"></div>
+                <img class="backImage" id="backImage"></img>
                 <a class="closeModal" onclick="closeModal()">
-                    <i class="fas fa-times"></i>
+                    <img class="closeIcon" src="assets2/cancel.png">
                 </a>
                 <div class="modalMovieTitle" id="modalMovieTitle">
-                    <p>Título de la película</p>
-                    <span>Subtítulo</span>
                 </div>
             </div>
-            <img class="modalPoster" id="modalPoster" src="assets2/imgexample.jpg">
+            <div id="posterDiv">
+                <img class="modalPoster" id="modalPoster">
+            </div>
             <div class="bottomModal">
                 <div class="movieDetails" id="movieDetails">
-                    <p class="summary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia numquam minima quis molestiae ea vel reprehenderit iste nisi, aut corrupti modi officiis.  quis molestiae ea vel reprehenderit iste nisi, aut corrupti modi officiis. quis molestiae ea vel reprehenderit iste nisi, aut corrupti modi officiis</p>
                     <div class="detailsSection" id="detailsSection">
-                        <p class="modalColorTitles">Genres</p>
-                        <p class="modalText">Palabritas</p>
-                    </div>
-                    <div class="detailsSection" id="detailsSection">
-                        <p class="modalColorTitles">Release Date</p>
-                        <p class="modalText">09/05/2079</p>
+                        <div id="modalText"></div>
                     </div>
                 </div>
             </div>

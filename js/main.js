@@ -1,6 +1,6 @@
 // definimos las variables globales
 var apiKey = "c6f4b7af00ff89712efe89669fe19897";
-var baseUrl, moviesByCategory, apiConf, totalItems, titleContainer, container;
+var baseUrl, moviesByCategory, apiConf, totalItems, titleContainer, container, moviesById;
 var category = '';
 const categoryList = ['popular','top_rated','upcoming','now_playing'];
 var resultType = ['Home','Query','Category']
@@ -19,13 +19,14 @@ const getApiConf = () => {
 //         .then ( moviesByCategory => printResults(moviesByCategory,node,resultsType,'',category))
 // };
 
+
 // FUNCIONES UTILITARIAS
 // FU: creacion de elementos en pantalla
-const createElement = (tag,elemClasses,elementId='',text='') => {
+const createElement = (tag,elemClasses,elementId='',text) => {
     let element = document.createElement(tag);
     elemClasses.forEach( eClass => element.classList.add(eClass))
     element.id = elementId
-    element.innerText = text
+    element.innerText = `${text}`
     return element
 };
 
@@ -53,7 +54,7 @@ const getCategoryMovies = (category,categoryNode,resultType) => {
 const searchSingleMovieData = (movieId) => {
     fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`)
     .then ((res) => res.json())
-    .then ((res) => console.log(res))
+    .then ((res) =>  fillModal(res))
 };
 
 // busca las pelis por lo indicado en el input
@@ -178,6 +179,43 @@ const printMovieItems = (movieItems, categoryNode) =>{
     });
 };
 
+const fillModal = (movie) => {
+    let container = setNode('modalMovieTitle');
+    container.innerHTML = ''
+    let detailsContainer = setNode('detailsSection')
+    detailsContainer.innerHTML = ''
+    backImageContainer = ''
+    let dateInfo = movie.release_date
+    let formatDate = moment(dateInfo).format("MMM Do YY")
+    let onlyYear = moment(dateInfo).format("YYYY")
+    let modalTitle = createElement('p',['modalTitle'],'',`${movie.title} (${onlyYear})`)
+    let subtitle = createElement('span',["modalSubtitle"],'',movie.tagline)
+    let summary = createElement('p',['summary'],'',movie.overview)
+    let releaseDate = createElement('p',['modalText'],'',formatDate)
+    let rating = createElement('p',['rating'],'',movie.vote_average)
+    let poster = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${movie.poster_path}`
+    let modalPoster
+    modalPoster = document.getElementById("modalPoster").src=(poster)
+    let backImage = document.getElementById('backImage').src=(`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`)
+    setChilds(container, [modalTitle])
+    setChilds(container, [subtitle])
+    setChilds(detailsContainer, [summary])
+    let genreP = createElement('p',['modalColorTitles'],'',`Genres: `)
+    setChilds(detailsContainer, [genreP])
+    movie.genres.forEach(gen => {
+        let genres = createElement('p',['modalText'],'',`${gen.name}. `)
+        setChilds(detailsContainer, [genres])
+    })
+    let releaseP = createElement('p',['modalColorTitles'],'',`Release date: `)
+    setChilds(detailsContainer, [releaseP])
+    setChilds(detailsContainer, [releaseDate])
+    setChilds(container, [rating])
+    setChilds(container, [modalPoster])
+    setChilds(detailsContainer, [backImage])
+    
+}
+
+// muestra los elementos del home
 // FUNCIONES DE SETEO
 // setea la carga de los elemento del home
 const setHomeMovieItems = async (categoryList) => {
@@ -219,11 +257,11 @@ const handleSearch = async () => {
 // };
 
 //modal
-const modal = async (movieId) => {
+const modal = (movieId) => {
     let activeModal = document.getElementById('activeModal')
     activeModal.classList.remove('modal')
     activeModal.classList.add('activeModal')
-    await searchSingleMovieData(movieId);
+    searchSingleMovieData(movieId);
 };
     
 const closeModal = () => {
@@ -236,6 +274,7 @@ const closeModal = () => {
 const toggleMenu = () => {
     let leftNav = document.getElementById("leftNav")
     leftNav.classList.toggle("openLeftNav")
+    leftNav.classList.toggle('closed')
 };
 
 //inicializamos el home
