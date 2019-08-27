@@ -54,13 +54,26 @@ const searchSingleMovieData = (movieId) => {
     .then ((res) =>  fillModal(res))
 };
 
+// muestra en pantalla los resultados de las categorías
+const printCategoryResults = (movies,categoryNode) => {
+    movies.forEach( movie => {
+        let movieItem = createElement('a',[ 'titleContainer' ],movie.id);
+        let movieImg = createElement('img',[ 'titlePoster' ]);
+        movieImg.src = `${apiConf.images.base_url}/w342/${movie.poster_path}`;
+        movieItem.setAttribute('onclick','modal(this.id)'); //ojo hacer funcion que asigne funcionalidad a los eventos
+        let dateInfo = movie.release_date
+        let onlyYear = moment(dateInfo).format("YYYY")
+        let movieName = createElement('p',[ 'titleName' ],'',`${movie.title} (${onlyYear})`);
+        setChilds(movieItem,[movieImg,movieName])
+        setChilds(categoryNode,[movieItem])
+    })
+};
+
 const fillModal = (movie) => {
-    //console.log(movie)
     let container = setNode('modalMovieTitle');
     container.innerHTML = ''
     let detailsContainer = setNode('detailsSection')
     detailsContainer.innerHTML = ''
-    let backImageContainer = setNode('backImage')
     backImageContainer = ''
     let dateInfo = movie.release_date
     let formatDate = moment(dateInfo).format("MMM Do YY")
@@ -71,6 +84,7 @@ const fillModal = (movie) => {
     let releaseDate = createElement('p',['modalText'],'',formatDate)
     let rating = createElement('p',['rating'],'',movie.vote_average)
     let poster = `https://image.tmdb.org/t/p/w370_and_h556_bestv2${movie.poster_path}`
+    let modalPoster
     modalPoster = document.getElementById("modalPoster").src=(poster)
     //let modalPoster = document.createElement('img')
     //modalPoster.classList.add('modalPoster')
@@ -100,20 +114,7 @@ const fillModal = (movie) => {
     
 }
 
-// muestra en pantalla los resultados de las categorías
-const printCategoryResults = (movies,categoryNode) => {
-    movies.forEach( movie => {
-        let movieItem = createElement('a',[ 'titleContainer' ],movie.id);
-        let movieImg = createElement('img',[ 'titlePoster' ]);
-        movieImg.src = `${apiConf.images.base_url}/w342/${movie.poster_path}`;
-        movieItem.setAttribute('onclick','modal(this.id)'); //ojo hacer funcion que asigne funcionalidad a los eventos
-        let dateInfo = movie.release_date
-        let onlyYear = moment(dateInfo).format("YYYY")
-        let movieName = createElement('p',[ 'titleName' ],'',`${movie.title} (${onlyYear})`);
-        setChilds(movieItem,[movieImg,movieName])
-        setChilds(categoryNode,[movieItem])
-    })
-};
+
 
 // muestra los elementos del home
 const setHomeMovieItems = async (categoryList) => {
@@ -173,6 +174,7 @@ const closeModal = () => {
 const toggleMenu = () => {
     let leftNav = document.getElementById("leftNav")
     leftNav.classList.toggle("openLeftNav")
+    leftNav.classList.toggle('closed')
 };
 
 //inicializamos el home

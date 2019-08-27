@@ -159,15 +159,19 @@ body{
             max-height: 0;
             overflow: hidden;
             .openLeftNav{
-                width: 100%;
-                height: calc(100vh - 50px);
+                //width: 100%;
+                //height: calc(100vh - 50px);
                 //max-height: 100vh;
-                margin-top: 0px;
+                width: 100vw;
+                height: 100vh;
+                //margin-top: 0px;
                 background-color: hsla(0,0%,100%,.98);
                 opacity: 1;
-                visibility: visible;    
-                display: block; 
-                position: absolute;
+                //visibility: visible;    
+                //display: block; 
+                //position: absolute;
+                display: flex;
+                z-index: 999;
             }
         }
         ul.leftMenu{
@@ -455,9 +459,8 @@ body{
                     .modalSubtitle{
                         color: $darkBlue;
                         font-size: 18px;
-                        margin-top: 5px;
+                        margin-top: 10px;
                         line-height: 20px;
-                        font-style: italic;
                     }
                     .rating{
                         font-size: 22px;
@@ -533,3 +536,5 @@ body{
         display:none;
     }
 }
+
+

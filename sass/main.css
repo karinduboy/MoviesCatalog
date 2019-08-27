@@ -235,14 +235,14 @@ body nav.leftNav {
     overflow: hidden;
   }
   body nav.leftNav .openLeftNav {
-    width: 100%;
-    height: calc(100vh - 50px);
-    margin-top: 0px;
+    width: 100vw;
+    height: 100vh;
     background-color: rgba(255, 255, 255, 0.98);
     opacity: 1;
-    visibility: visible;
-    display: block;
-    position: absolute;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    z-index: 999;
   }
 }
 
@@ -669,9 +669,8 @@ body .activeModal .modalContainer .topModal .modalMovieTitle p {
 body .activeModal .modalContainer .topModal .modalMovieTitle .modalSubtitle {
   color: #081C24;
   font-size: 18px;
-  margin-top: 5px;
+  margin-top: 10px;
   line-height: 20px;
-  font-style: italic;
 }
 
 body .activeModal .modalContainer .topModal .modalMovieTitle .rating {
