@@ -192,7 +192,6 @@ const fillModal = (movie) => {
 // FUNCIONES DE SETEO
 // setea la carga de los elemento del home
 const setHomeMovieItems = async (categoryList) => {
-    debugger;
     var resultsContainer = setNode('resultsContainer');
     categoryList.forEach(async (category) => {
         // let sectionContainer = createElement('section',['sectionContainer']);
@@ -216,16 +215,16 @@ const handleSearch = async () => {
 		await getQueryResults(query,node)
 	};
 };
-
-// funcion que imprime los resultados de la busqueda (OPTIMIZAR CON LAS FUNCIONES DE CREACION DE ELEMENTOS)
-// const printQueryResults = (movies,categoryNode,resultType,query,category) => {
-// 	let container = setNode('resultsContainer');
-//     let searchResults = createElement('section',['searchResults']);
-//     setChilds(container,[searchResults])
-//     let topLineText = `Movies for: "${query}..."`;
-//     setTopLineResult(movies.totalResults,searchResults,topLineText,page,query)
-// 	printMovieItems(movies,categoryNode)
-// };
+/*
+//funcion que imprime los resultados de la busqueda (OPTIMIZAR CON LAS FUNCIONES DE CREACION DE ELEMENTOS)
+const printQueryResults = (movies,categoryNode,resultType,query,category) => {
+ 	let container = setNode('resultsContainer');
+     let searchResults = createElement('section',['searchResults']);
+     setChilds(container,[searchResults])
+     let topLineText = `Movies for: "${query}..."`;
+     setTopLineResult(movies.totalResults,searchResults,topLineText,page,query)
+ 	printMovieItems(movies,categoryNode)
+};*/
 
 //modal
 const modal = (movieId) => {
@@ -244,9 +243,16 @@ const closeModal = () => {
 //menú responsive
 const toggleMenu = () => {
     let leftNav = document.getElementById("leftNav")
-    leftNav.classList.toggle("openLeftNav")
-    leftNav.classList.toggle('closed')
+    leftNav.classList.toggle("open")
+    leftNav.classList.toggle("closed")
 };
+
+const closeMenu = () => {
+    let leftNav = document.getElementById("leftNav")
+    if (leftNav.classList.contains("open")) {
+      toggleMenu()
+    }
+  }
 
 //inicializamos el home
 const initialize = async() => {
