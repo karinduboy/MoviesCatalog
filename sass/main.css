@@ -317,6 +317,8 @@ body nav.leftNav ul.leftMenu li.menuOption a.menuLink {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   width: 100%;
   height: 100%;
   border-bottom: 0.2px solid #c6c6c6;
@@ -435,77 +437,41 @@ body .mainContainer .resultsContainer {
   }
 }
 
-body .mainContainer .resultsContainer .searchResults {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin: 5%;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-}
-
-body .mainContainer .resultsContainer .searchResults .titleContainer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding: 20px;
-}
-
-body .mainContainer .resultsContainer .searchResults .titleContainer .titlePoster {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-left: 20px;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-}
-
 body .mainContainer .resultsContainer .sectionContainer {
   margin: 0 0 5% 0;
+  overflow: hidden;
 }
 
 body .mainContainer .resultsContainer .sectionContainer .sectionTopLine {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-body .mainContainer .resultsContainer .sectionContainer .sectionTopLine .topLine {
-  display: inline-block;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 1;
+  -ms-grid-columns: 2;
+      grid-template: 1 / 2;
+  -ms-grid-columns: 80% 20%;
+      grid-template-columns: 80% 20%;
 }
 
 body .mainContainer .resultsContainer .sectionContainer .sectionTopLine .sectionTitle {
   font-size: 19.6px;
   text-transform: capitalize;
   font-weight: 100;
-  margin-bottom: 20px;
+  margin-bottom: 21px;
+  display: inline-block !important;
 }
 
 body .mainContainer .resultsContainer .sectionContainer .sectionTopLine .viewAllLink {
   font-size: 12.6px;
   text-decoration: none;
+  text-align: end;
+}
+
+body .mainContainer .resultsContainer .sectionContainer .sectionTopLine .topLine {
+  display: inline-block;
+}
+
+body .mainContainer .resultsContainer .sectionContainer .searchResults {
+  margin: 5%;
 }
 
 body .mainContainer .resultsContainer .sectionContainer .firstTitles {
@@ -513,13 +479,11 @@ body .mainContainer .resultsContainer .sectionContainer .firstTitles {
   display: grid;
   grid-gap: 4%;
   text-align: left;
-  -ms-grid-rows: 2;
+  -ms-grid-rows: 1;
   -ms-grid-columns: 5;
-      grid-template: 2 / 5;
+      grid-template: 1 / 5;
   -ms-grid-columns: (17%)[5];
       grid-template-columns: repeat(5, 17%);
-  -ms-grid-rows: 90% 10%;
-      grid-template-rows: 90% 10%;
   margin: auto;
 }
 
@@ -530,8 +494,6 @@ body .mainContainer .resultsContainer .sectionContainer .firstTitles {
         grid-template: 3 / 2;
     -ms-grid-columns: (48%)[2];
         grid-template-columns: repeat(2, 48%);
-    -ms-grid-rows: auto auto auto;
-        grid-template-rows: auto auto auto;
     overflow: hidden;
   }
 }
@@ -541,19 +503,14 @@ body .mainContainer .resultsContainer .sectionContainer .firstTitles {
     -ms-grid-rows: 5;
     -ms-grid-columns: 1;
         grid-template: 5 / 1;
-    -ms-grid-rows: auto;
-        grid-template-rows: auto;
   }
-}
-
-body .mainContainer .resultsContainer .sectionContainer .firstTitles .titleContainer {
-  padding: 0 0 2% 0;
 }
 
 body .mainContainer .resultsContainer .sectionContainer .firstTitles .titleContainer .titlePoster {
   background-color: #444444;
   width: 100%;
   max-width: 100%;
+  height: 90%;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -566,6 +523,7 @@ body .mainContainer .resultsContainer .sectionContainer .firstTitles .titleConta
 body .mainContainer .resultsContainer .sectionContainer .firstTitles .titleContainer .titleName {
   padding: 10% 0 0 0;
   color: rgba(8, 28, 36, 0.7);
+  height: 10%;
 }
 
 body .activeModal {

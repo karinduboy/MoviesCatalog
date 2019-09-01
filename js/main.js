@@ -13,16 +13,11 @@ const getApiConf = () => {
         .then( res => apiConf = res )
 };
 
-// const getCategoryMovieResults = (category,node,resultsType) => {
-//     fetch(`https://api.themoviedb.org/3/movie/${category}?api_key=${apiKey}`)
-//     .then ( res => res.json())
-//         .then ( moviesByCategory => printResults(moviesByCategory,node,resultsType,'',category))
-// };
 
 
 // FUNCIONES UTILITARIAS
 // FU: creacion de elementos en pantalla
-const createElement = (tag,elemClasses,elementId='',text) => {
+const createElement = (tag,elemClasses,elementId='',text='') => {
     let element = document.createElement(tag);
     elemClasses.forEach( eClass => element.classList.add(eClass))
     element.id = elementId
@@ -45,25 +40,30 @@ const setNode = (nodeId) => {
 // FUNCIONES PARA FETCH
 // busca las peliculas de las categorias del home
 const getCategoryMovies = (category,categoryNode,resultType) => {
-	fetch(`https://api.themoviedb.org/3/movie/${category}?api_key=${apiKey}`)
-		.then((res) => res.json())
-		.then((res) => printResults(res,categoryNode,resultType,'',category));
+    fetch(`https://api.themoviedb.org/3/movie/${category}?api_key=${apiKey}`)
+    .then((res) => res.json())
+    .then((res) => printResults(res,categoryNode,resultType,'',category));
 };
+// const getCategoryMovieResults = (category,node,resultsType) => {
+//     fetch(`https://api.themoviedb.org/3/movie/${category}?api_key=${apiKey}`)
+//     .then ( res => res.json())
+//         .then ( moviesByCategory => printResults(moviesByCategory,node,resultsType,'',category))
+// };
 
 // busca la info de una peli
 const searchSingleMovieData = (movieId) => {
     fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`)
     .then ((res) => res.json())
-    .then ((res) =>  fillModal(res))
+    .then ((res) => fillModal(res));
 };
 
 // busca las pelis por lo indicado en el input
 const getQueryResults = (query,node) => {
-    // debugger;
     fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`)
             .then((res) => res.json())
 			.then((movies) => printResults(movies,node,'Query',query));
-}
+};
+
 // var resultTypeVars = {
 //     Home:{
 //         resultType: 'Home',
@@ -110,31 +110,19 @@ const getQueryResults = (query,node) => {
 //     }
 // };
 
-const setTopLineResult = (totalResults,categoryNode,topLineText,page,resultType,query,category) => {
-    // debugger;
-    let linkText = (resultType === 'Home') ? 'View All...' : `${totalResults}`;
-    let onclickAction = ( resultType === 'Home') ? `setMovieItems(${category},${categoryNode},${resultType})` : `setMovieItems(${query},${categoryNode},${resultType})`;
-    let sectionContainerClass =  (resultType === 'Home') ? ['firstResults'] : ['searchResults'];
-    let sectionContainerId = (resultType === 'Home') ? '' : page;
-    let sectionContainer = createElement('section',sectionContainerClass,sectionContainerId);
+const setTopLineResult = (totalResults,sectionContainer,topLineText,page,resultType,query,category) => {
+    let linkText = (resultType === 'Home') ? 'View All...' : `see all ${totalResults} results`;
+    let onclickAction = ( resultType === 'Home') ? `setMovieItems(${category},${sectionContainer},${resultType})` : `setMovieItems(${query},${sectionContainer},${resultType})`;
     let topLineContainer = createElement('div',['sectionTopLine']);
-    let sectionName = createElement('h2',['sectionTitle','topLine'],'',topLineText);
+    let sectionName = createElement('p',['sectionTitle','topLine'],'',topLineText);
     let viewAllLink = createElement('a',['viewAllLink','topLine'],'',linkText);
     viewAllLink.href = '#'
     viewAllLink.setAttribute('onclick',onclickAction)
     setChilds(topLineContainer,[sectionName,viewAllLink])
     setChilds(sectionContainer,[topLineContainer])
-    setChilds(categoryNode,[sectionContainer])
 };
 
-// const setMovieItems = (criteria,categoryNode,resultType) = {
-
-// }
-
-// muestra en pantalla los resultados de la busqueda (Home, Categoría y Query)
-// const setTopLineText = (resultType) => {
-//     if (resultType )
-// } 
+//Object Literal para asignar los textos de los encabezados de las listas de peliculas
 const setTopLineText = (resultsType,category,query) => {
     const searchTypes = {
         Home: {
@@ -156,9 +144,9 @@ const setTopLineText = (resultsType,category,query) => {
 
 const printResults = (movies,node,resultType,query,category) => {
     let topLineText = setTopLineText(resultType,category,query);
-    setTopLineResult(movies.totalItems,node,topLineText,movies.page,resultType,query,category)
+    setTopLineResult(movies.total_results,node,topLineText,movies.page,resultType,query,category)
     let containerClass =  (resultType === 'Home') ? ['firstTitles'] : ['searchResults'];
-    let containerId =  (resultType === 'Home') ? `${category}Results` : 'searchResults';
+    let containerId =  (resultType === 'Home' || resultType === 'Category') ? `${category}Results` : '';
     let ItemsContainer = createElement('div',containerClass,containerId);
     setChilds(node,[ItemsContainer])
     var movieItems = ( resultType === 'Home' ) ? ( movies.results.slice(0,5) ) : ( movies.results );
@@ -219,30 +207,35 @@ const fillModal = (movie) => {
 // FUNCIONES DE SETEO
 // setea la carga de los elemento del home
 const setHomeMovieItems = async (categoryList) => {
-    
     var resultsContainer = setNode('resultsContainer');
     categoryList.forEach(async (category) => {
-        // let sectionContainer = createElement('section',['sectionContainer']);
-        // setChilds(resultsContainer,[sectionContainer])
+        let sectionContainer = createElement('section',['sectionContainer'],`sectionContainer`);
+        setChilds(resultsContainer,[sectionContainer])
+        sectionContainer = setNode('sectionContainer')
         // debugger;
-        await getCategoryMovies(category,resultsContainer,'Home');
+        await getCategoryMovies(category,sectionContainer,'Home');
     })
 };
 
 // setea los elementos de cada categoría
 const setCategoryMovieItems = async (category,containerId) => {
     let container = setNode(containerId);
-    await getCategoryMovies(category,container,'Category')
+    let sectionContainer = createElement('section',['sectionContainer'],`sectionContainer`);
+    setChilds(container,[sectionContainer])
+    sectionContainer = setNode('sectionContainer')
+    await getCategoryMovies(category,sectionContainer,'Category')
 }
 
 // Funcion que llama a los fetch del search 
 const handleSearch = async () => {
     let query = event.target.value;
-    let node = setNode('resultsContainer');
-    // let searchContainer =  createElement('section')
+    let firstNode = setNode('resultsContainer');
+    let sectionContainer =  createElement('section',[`sectionContainer`],'sectionContainer');
+    setChilds(firstNode,[sectionContainer])
+    setNode('sectionContainer')
 	if (query.length >= 3 || (event.keyCode === 13 && query !== lastRequest)) {
 		lastRequest = query;
-		await getQueryResults(query,node)
+		await getQueryResults(query,sectionContainer)
 	};
 };
 
