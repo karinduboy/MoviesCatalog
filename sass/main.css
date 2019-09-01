@@ -476,6 +476,7 @@ body .mainContainer .resultsContainer .sectionContainer .sectionTopLine .viewAll
 
 body .mainContainer .resultsContainer .sectionContainer .sectionTopLine .topLine {
   display: inline-block;
+  margin-bottom: 20px;
 }
 
 body .mainContainer .resultsContainer .sectionContainer .searchResults {
@@ -492,7 +493,7 @@ body .mainContainer .resultsContainer .sectionContainer .firstTitles {
       grid-template: 1 / 5;
   -ms-grid-columns: (17%)[5];
       grid-template-columns: repeat(5, 17%);
-  margin: auto;
+  margin-bottom: 30px;
 }
 
 @media only screen and (max-width: 750px) {
@@ -529,7 +530,7 @@ body .mainContainer .resultsContainer .sectionContainer .firstTitles .titleConta
 }
 
 body .mainContainer .resultsContainer .sectionContainer .firstTitles .titleContainer .titleName {
-  padding: 10% 0 0 0;
+  padding: 2% 0 0 0;
   color: rgba(8, 28, 36, 0.7);
   height: 10%;
 }

@@ -309,6 +309,7 @@ body{
                     }
                     .topLine{
                         display: inline-block;
+                        margin-bottom: 20px;
                     }
                 }
                 .searchResults{
@@ -320,7 +321,7 @@ body{
                     text-align: left;
                     grid-template: 1 / 5;
                     grid-template-columns: repeat(5, 17%);
-                    margin: auto;
+                    margin-bottom: 30px;
                     @media only screen and (max-width: $tablet) {
                         grid-template: 3 / 2;
                         grid-template-columns: repeat(2, 48%);  
@@ -341,7 +342,7 @@ body{
                             }
                         }
                         .titleName{
-                            padding: 10% 0 0 0;
+                            padding: 2% 0 0 0;
                             color: $trsDB;
                             height: 10%;
                         }
@@ -510,7 +511,7 @@ input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration {
   display: none;
 }
-
+//animations
 @keyframes tracking-in-expand {
     0% {
       letter-spacing: -0.5em;

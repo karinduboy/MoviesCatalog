@@ -128,13 +128,13 @@ const setTopLineText = (resultsType,category,query) => {
         Home: {
             popular : "Popular Movies",
             top_rated : 'Top Rated Movies',
-            upcoming : "Upcomming Movies",
+            upcoming : "Upcoming Movies",
             now_playing : "Now Playing Movies"
         },
         Category: {
             popular : "Popular Movies",
             top_rated : 'Top Rated Movies',
-            upcoming : "Upcomming Movies",
+            upcoming : "Upcoming Movies",
             now_playing : "Now Playing Movies"
         },
         Query: `Movies with: ${query}...`
@@ -219,6 +219,7 @@ const setHomeMovieItems = async (categoryList) => {
 
 // setea los elementos de cada categoría
 const setCategoryMovieItems = async (category,containerId) => {
+    hideFrontImage();
     let container = setNode(containerId);
     let sectionContainer = createElement('section',['sectionContainer'],`sectionContainer`);
     setChilds(container,[sectionContainer])
@@ -228,6 +229,7 @@ const setCategoryMovieItems = async (category,containerId) => {
 
 // Funcion que llama a los fetch del search 
 const handleSearch = async () => {
+    hideFrontImage();
     let query = event.target.value;
     let firstNode = setNode('resultsContainer');
     let sectionContainer =  createElement('section',[`sectionContainer`],'sectionContainer');
@@ -236,7 +238,7 @@ const handleSearch = async () => {
 	if (query.length >= 3 || (event.keyCode === 13 && query !== lastRequest)) {
 		lastRequest = query;
 		await getQueryResults(query,sectionContainer)
-	};
+    };
 };
 
 // funcion que imprime los resultados de la busqueda (OPTIMIZAR CON LAS FUNCIONES DE CREACION DE ELEMENTOS)
@@ -269,6 +271,10 @@ const toggleMenu = () => {
     leftNav.classList.toggle("openLeftNav")
     leftNav.classList.toggle('closed')
 };
+
+const hideFrontImage = () => {
+    setNode('frontImage').style.display="none"
+}
 
 //inicializamos el home
 const initialize = async() => {
