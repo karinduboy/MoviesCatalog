@@ -254,6 +254,12 @@ const handleSearch = async () => {
     }
 };
 
+const createLoadMoreBtn = (container, category) => {
+    let currentPage = 2;
+    let btnContainer = createElement('div','btnContainer','','')
+
+}
+
 // funcion que imprime los resultados de la busqueda (OPTIMIZAR CON LAS FUNCIONES DE CREACION DE ELEMENTOS)
 // const printQueryResults = (movies,categoryNode,resultType,query,category) => {
 // 	let container = setNode('resultsContainer');

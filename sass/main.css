@@ -54,7 +54,7 @@ svg.iconLib {
 }
 
 body {
-  background-color: #F8F8F8;
+  background-color: #ebebeb;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   color: #081C24;
@@ -149,7 +149,7 @@ body header .topHeader div.searchBar {
   body header .topHeader div.searchBar {
     height: 50px;
     left: 55px;
-    border-bottom: 2px solid #F8F8F8;
+    border-bottom: 2px solid #ebebeb;
   }
 }
 
@@ -199,7 +199,7 @@ body header .topHeader .responsiveMenu {
     height: 50px;
     top: 0;
     right: 0;
-    border-left: 3px solid #F8F8F8;
+    border-left: 3px solid #ebebeb;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -287,12 +287,12 @@ body nav.leftNav ul.leftMenu li.menuOption {
   font-size: 12.5px;
   width: 100%;
   height: 95px;
-  border-bottom: 1px solid #F8F8F8;
+  border-bottom: 1px solid #ebebeb;
 }
 
 body nav.leftNav ul.leftMenu li.menuOption :hover {
   color: #081C24;
-  background-color: #F8F8F8;
+  background-color: #ebebeb;
 }
 
 body nav.leftNav ul.leftMenu li.menuOption :hover .leftMenuIcon {
@@ -525,8 +525,12 @@ body .mainContainer .resultsContainer .sectionContainer .firstTitles .titleConta
 }
 
 body .mainContainer .resultsContainer .sectionContainer .firstTitles .titleContainer .titlePoster:hover {
-  -webkit-box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 26px 0 rgba(0, 0, 0, 0.19);
-          box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 26px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 26px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 26px 0 rgba(0, 0, 0, 0.2);
+  -webkit-transform: scale(1.01);
+          transform: scale(1.01);
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
 body .mainContainer .resultsContainer .sectionContainer .firstTitles .titleContainer .titleName {
@@ -563,6 +567,8 @@ body .activeModal {
   background-color: rgba(8, 28, 36, 0.9);
   z-index: 105;
   height: 100vh;
+  -webkit-animation: scale-up-center 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+          animation: scale-up-center 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
 body .activeModal .modalContainer {
@@ -630,8 +636,8 @@ body .activeModal .modalContainer .topModal .closeModal .closeIcon:hover {
 body .activeModal .modalContainer .topModal .modalMovieTitle {
   position: absolute;
   top: 35%;
-  right: 3%;
-  width: 400px;
+  right: 5%;
+  width: 390px;
 }
 
 @media only screen and (max-width: 750px) {
@@ -662,13 +668,11 @@ body .activeModal .modalContainer .topModal .modalMovieTitle .modalSubtitle {
 
 body .activeModal .modalContainer .topModal .modalMovieTitle .rating {
   font-size: 22px;
-  background-color: #F8F8F8;
+  background-color: #ebebeb;
   color: #081C24;
   float: right;
-  border-radius: 50%;
-  padding: 4%;
-  margin-top: 10px;
-  border: 1px solid #081C24;
+  padding: 3%;
+  margin-top: 15px;
 }
 
 @media only screen and (max-width: 420px) {
@@ -682,8 +686,8 @@ body .activeModal .modalContainer .modalPoster {
   position: absolute;
   top: 15%;
   left: 5%;
-  -webkit-transform: scale(1);
-          transform: scale(1);
+  -webkit-animation: scale-in-top 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+          animation: scale-in-top 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 @media only screen and (max-width: 750px) {
@@ -803,6 +807,62 @@ input[type="search"]::-webkit-search-results-decoration {
   }
   100% {
     text-shadow: 6px 0 18px rgba(0, 0, 0, 0.35);
+  }
+}
+
+@-webkit-keyframes scale-up-center {
+  0% {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes scale-up-center {
+  0% {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@-webkit-keyframes scale-in-top {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    -webkit-transform-origin: 50% 0%;
+    transform-origin: 50% 0%;
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: 50% 0%;
+    transform-origin: 50% 0%;
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in-top {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    -webkit-transform-origin: 50% 0%;
+    transform-origin: 50% 0%;
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: 50% 0%;
+    transform-origin: 50% 0%;
+    opacity: 1;
   }
 }
 /*# sourceMappingURL=main.css.map */
