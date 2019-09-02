@@ -535,6 +535,26 @@ body .mainContainer .resultsContainer .sectionContainer .firstTitles .titleConta
   height: 10%;
 }
 
+body .mainContainer .resultsContainer .sectionContainer .notFoundContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+body .mainContainer .resultsContainer .sectionContainer .notFoundContainer .errorMessage {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
 body .activeModal {
   width: 100%;
   top: 0;

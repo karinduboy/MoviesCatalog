@@ -239,6 +239,19 @@ const handleSearch = async () => {
 		lastRequest = query;
 		await getQueryResults(query,sectionContainer)
     };
+    if (query.length >= 3 || (event.keyCode === 13 && query === lastRequest)){
+        let notFoundContainer = document.createElement('div');
+        notFoundContainer.classList.add('notFoundContainer')
+        let errorMessage = document.createElement('p');
+        errorMessage.classList.add('errorMessage');
+        errorMessage.innerText = 'Sorry, try again!'
+        let notFoundGif = document.createElement('img');
+        notFoundGif.src= 'assets2/confused-Travolta.gif';
+        notFoundGif.classList.add('notFoundGif');
+        notFoundContainer.appendChild(errorMessage);
+        notFoundContainer.appendChild(notFoundGif);
+        sectionContainer.appendChild(notFoundContainer)
+    }
 };
 
 // funcion que imprime los resultados de la busqueda (OPTIMIZAR CON LAS FUNCIONES DE CREACION DE ELEMENTOS)

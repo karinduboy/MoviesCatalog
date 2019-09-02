@@ -348,6 +348,17 @@ body{
                         }
                     }   
                 }
+                .notFoundContainer{
+                    display: flex;
+                    text-align: center;
+                    align-items: center;
+                    justify-items: center;
+                    flex-direction: column;
+                    .errorMessage{
+                        font-size: 22px;
+                        margin-bottom: 10px;
+                    }
+                }
             }
         }
     }
