@@ -253,20 +253,6 @@ const handleSearch = async () => {
     }
 };
 
-const createLoadMoreBtn = () => {
-    let currentPage = 2;
-    let container = setNode('resultsContainer')
-    let btnContainer = createElement('div','btnContainer','','')
-    let loadMoreBtn = createElement('a','loadMoreBtn','loadMoreBtn','LOAD MORE')
-    loadMoreBtn.onclick=()=>{
-        loadMore(category,currentPage)
-        currentPage++
-        return currentPage
-    }
-    setChilds(btnContainer,[loadMoreBtn])
-    setChilds(container,[btnContainer])
-    
-}
 
 // funcion que imprime los resultados de la busqueda (OPTIMIZAR CON LAS FUNCIONES DE CREACION DE ELEMENTOS)
 // const printQueryResults = (movies,categoryNode,resultType,query,category) => {
