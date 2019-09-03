@@ -13,8 +13,6 @@ const getApiConf = () => {
         .then( res => apiConf = res )
 };
 
-
-
 // FUNCIONES UTILITARIAS
 // FU: creacion de elementos en pantalla
 const createElement = (tag,elemClasses,elementId='',text='') => {
@@ -44,11 +42,6 @@ const getCategoryMovies = (category,categoryNode,resultType) => {
     .then((res) => res.json())
     .then((res) => printResults(res,categoryNode,resultType,'',category));
 };
-// const getCategoryMovieResults = (category,node,resultsType) => {
-//     fetch(`https://api.themoviedb.org/3/movie/${category}?api_key=${apiKey}`)
-//     .then ( res => res.json())
-//         .then ( moviesByCategory => printResults(moviesByCategory,node,resultsType,'',category))
-// };
 
 // busca la info de una peli
 const searchSingleMovieData = (movieId) => {
@@ -63,52 +56,6 @@ const getQueryResults = (query,node) => {
             .then((res) => res.json())
 			.then((movies) => printResults(movies,node,'Query',query));
 };
-
-// var resultTypeVars = {
-//     Home:{
-//         resultType: 'Home',
-//         fetchDir: `https://api.themoviedb.org/3/movie/${category}?api_key=${apiKey}`,
-//         categoryNodeClass: 'firstTitles',
-//         linkText: 'View All...',
-//         linkAction: `searchHomeCategoryMovies(category,categoryNode,'Category')`,
-//         topLineText: {
-//             popular: 'Popular Movies',
-//             top_rated: 'Top Rated Movies',
-//             upcoming: 'Upcoming Movies',
-//             now_playing: 'Now Playing Movies'
-//         },
-//         movieItems: movies.results.slice(0,5),
-//         query:'',
-//         page: ''
-//     },
-//     Category:{
-//         resultType: 'Category',
-//         fetchDir: `https://api.themoviedb.org/3/movie/${category}?api_key=${apiKey}`,
-//         categoryNodeClass: 'searchResults',
-//         linkText: `See all (${movies.total_results}) results`,
-//         linkAction: `searchMovies(category,categoryNode,'Category')`,
-//         topLineText: {
-//             popular: 'Popular Movies',
-//             top_rated: 'Top Rated Movies',
-//             upcoming: 'Upcoming Movies',
-//             now_playing: 'Now Playing Movies'
-//         },
-//         movieItems: movies.results,
-//         query: '',
-//         page: `${movies.page}`
-//     },
-//     Query:{
-//         resultType: 'Query',
-//         fetchDir: `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`,
-//         categoryNodeClass: 'searchResults',
-//         linkText: `See all (${movies.total_results}) results`,
-//         linkAction: `searchMovies(category,categoryNode,'Category')`,
-//         topLineText:`Movies for: "${query}..."`,
-//         movieItems: movies.results,
-//         query: '',
-//         page: `${movies.page}`
-//     }
-// };
 
 const setTopLineResult = (totalResults,sectionContainer,topLineText,page,resultType,query,category) => {
     let linkText = (resultType === 'Home') ? 'View All...' : `see all ${totalResults} results`;
@@ -252,17 +199,6 @@ const handleSearch = async () => {
         sectionContainer.appendChild(notFoundContainer)
     }
 };
-
-
-// funcion que imprime los resultados de la busqueda (OPTIMIZAR CON LAS FUNCIONES DE CREACION DE ELEMENTOS)
-// const printQueryResults = (movies,categoryNode,resultType,query,category) => {
-// 	let container = setNode('resultsContainer');
-//     let searchResults = createElement('section',['searchResults']);
-//     setChilds(container,[searchResults])
-//     let topLineText = `Movies for: "${query}..."`;
-//     setTopLineResult(movies.totalResults,searchResults,topLineText,page,query)
-// 	printMovieItems(movies,categoryNode)
-// };
 
 //modal
 const modal = (movieId) => {
