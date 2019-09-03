@@ -212,7 +212,6 @@ const setHomeMovieItems = async (categoryList) => {
         let sectionContainer = createElement('section',['sectionContainer'],`sectionContainer`);
         setChilds(resultsContainer,[sectionContainer])
         sectionContainer = setNode('sectionContainer')
-        // debugger;
         await getCategoryMovies(category,sectionContainer,'Home');
     })
 };
@@ -239,7 +238,7 @@ const handleSearch = async () => {
 		lastRequest = query;
 		await getQueryResults(query,sectionContainer)
     };
-    if (query.length >= 3 || (event.keyCode === 13 && query === lastRequest)){
+    if (event.keyCode === 13 && query === lastRequest){
         let notFoundContainer = document.createElement('div');
         notFoundContainer.classList.add('notFoundContainer')
         let errorMessage = document.createElement('p');
@@ -254,10 +253,19 @@ const handleSearch = async () => {
     }
 };
 
-const createLoadMoreBtn = (container, category) => {
+const createLoadMoreBtn = () => {
     let currentPage = 2;
+    let container = setNode('resultsContainer')
     let btnContainer = createElement('div','btnContainer','','')
-
+    let loadMoreBtn = createElement('a','loadMoreBtn','loadMoreBtn','LOAD MORE')
+    loadMoreBtn.onclick=()=>{
+        loadMore(category,currentPage)
+        currentPage++
+        return currentPage
+    }
+    setChilds(btnContainer,[loadMoreBtn])
+    setChilds(container,[btnContainer])
+    
 }
 
 // funcion que imprime los resultados de la busqueda (OPTIMIZAR CON LAS FUNCIONES DE CREACION DE ELEMENTOS)

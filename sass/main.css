@@ -567,8 +567,8 @@ body .activeModal {
   background-color: rgba(8, 28, 36, 0.9);
   z-index: 105;
   height: 100vh;
-  -webkit-animation: scale-up-center 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-          animation: scale-up-center 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  -webkit-animation: scale-up-center 1s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+          animation: scale-up-center 1s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
 body .activeModal .modalContainer {
@@ -686,8 +686,8 @@ body .activeModal .modalContainer .modalPoster {
   position: absolute;
   top: 15%;
   left: 5%;
-  -webkit-animation: scale-in-top 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-          animation: scale-in-top 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  -webkit-animation: scale-in-top 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+          animation: scale-in-top 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 @media only screen and (max-width: 750px) {
