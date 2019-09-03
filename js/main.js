@@ -299,9 +299,16 @@ const toggleMenu = () => {
     leftNav.classList.toggle('closed')
 };
 
+const closeMenu = () => {
+    let leftNav = document.getElementById("leftNav")
+    if (leftNav.classList.contains("open")) {
+      toggleMenu()
+    }
+};
+
 const hideFrontImage = () => {
     setNode('frontImage').style.display="none"
-}
+};
 
 //inicializamos el home
 const initialize = async() => {

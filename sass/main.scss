@@ -88,7 +88,6 @@ body{
                 @media only screen and (max-width: $tablet) {
                     height: 50px;
                     left: 55px;
-                    border-bottom: 2px solid $bgColor;
                 }
                 @media only screen and (max-width: $mobile) {
                     padding-left: 12px;
@@ -142,41 +141,47 @@ body{
         }
     }
     nav.leftNav{
-        display: block;
         position: fixed;
         float: left;
         width: 95px;
         height: 100vh;
         background-color: $menuBg;
         float: left;
-        position: fixed;
-        background-color: $menuBg;
         z-index: 10;
-        @media only screen and (max-width: $tablet) {
-            max-height: 0;
-            overflow: hidden;
-            .openLeftNav{
-                width: 100vw;
-                height: 100vh;
-                background-color: hsla(0,0%,100%,.98);
-                opacity: 1;
-                display: flex;
-                z-index: 999;
+        left: 0;
+        top: 75px;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        flex-wrap: wrap;
+        @media screen and (max-width: $tablet) {
+            display: none;
+        }
+        .closed {
+            @media screen and (max-width: $tablet) and (max-width: $mobile) {
+                display: none;
+            }
+        }
+        .open{
+            display: flex;
+            z-index: 999;
+            list-style: none;
+            background-color: white;
+            max-width: 100%;
+            height: 100vh;
+            border-top: 1px solid #f8f8f8;
+            background: hsla(0,0%,100%,.98);
+            visibility: visible;
+            opacity: 1;
+            transition: 0.5s ease;
+            .menuOption{
+                width: 50%;
+            }
+            .menuLink{
+                border-right: 1px solid #f8f8f8;
             }
         }
         ul.leftMenu{
-            display: flex;
-            left: 0;
-            top: 75px;
-            width: 95px;
-            flex-direction: column;
-            text-align: center;
-            align-items: center;
-            flex-wrap: wrap;
-            @media only screen and (max-width: $tablet) {
-                flex-direction: row;
-                width: 100%;
-            }
             li.menuOption{
                 background-color: $menuBg;
                 list-style: none;

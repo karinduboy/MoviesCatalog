@@ -149,7 +149,6 @@ body header .topHeader div.searchBar {
   body header .topHeader div.searchBar {
     height: 50px;
     left: 55px;
-    border-bottom: 2px solid #ebebeb;
   }
 }
 
@@ -223,42 +222,15 @@ body header .topHeader .responsiveMenu div.responsiveMenuIcon i.fa-bars {
 }
 
 body nav.leftNav {
-  display: block;
   position: fixed;
   float: left;
   width: 95px;
   height: 100vh;
   background-color: #ffffff;
   float: left;
-  position: fixed;
-  background-color: #ffffff;
   z-index: 10;
-}
-
-@media only screen and (max-width: 750px) {
-  body nav.leftNav {
-    max-height: 0;
-    overflow: hidden;
-  }
-  body nav.leftNav .openLeftNav {
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(255, 255, 255, 0.98);
-    opacity: 1;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    z-index: 999;
-  }
-}
-
-body nav.leftNav ul.leftMenu {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   left: 0;
   top: 75px;
-  width: 95px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -271,14 +243,41 @@ body nav.leftNav ul.leftMenu {
       flex-wrap: wrap;
 }
 
-@media only screen and (max-width: 750px) {
-  body nav.leftNav ul.leftMenu {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    width: 100%;
+@media screen and (max-width: 750px) {
+  body nav.leftNav {
+    display: none;
   }
+}
+
+@media screen and (max-width: 750px) and (max-width: 420px) {
+  body nav.leftNav .closed {
+    display: none;
+  }
+}
+
+body nav.leftNav .open {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  z-index: 999;
+  list-style: none;
+  background-color: white;
+  max-width: 100%;
+  height: 100vh;
+  border-top: 1px solid #f8f8f8;
+  background: rgba(255, 255, 255, 0.98);
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+
+body nav.leftNav .open .menuOption {
+  width: 50%;
+}
+
+body nav.leftNav .open .menuLink {
+  border-right: 1px solid #f8f8f8;
 }
 
 body nav.leftNav ul.leftMenu li.menuOption {
