@@ -160,6 +160,7 @@ const setHomeMovieItems = async (categoryList) => {
         setChilds(resultsContainer,[sectionContainer])
         sectionContainer = setNode('sectionContainer')
         await getCategoryMovies(category,sectionContainer,'Home');
+        //en este caso await no tiene efecto porque no se espera un resultado, si no que se asigna una llamada que se ejecuta por su cuenta. En todo caso, el await debería usarse en el fetch.
     })
 };
 
