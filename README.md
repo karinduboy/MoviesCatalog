@@ -1,3 +1,34 @@
+MOVIES CATALOG
+
+Stack: HTML5 / CSS3 (Sass) / JS Vanilla / NodeJS-Express
+
+ACTIVIDADES A REALIZAR:
+  DEFINICIÓN DE CONVENCIONES:
+    camelCase: para variables, clases, id's, etc.
+    archivos graficos de logos e iconos, en svg
+    fuente: link como en Requerimientos
+ 
+  MAQUETACIONES:
+    HOME DESKTOP
+      SearchBar
+        Diseño
+        Sticky
+      Logo
+      Category Bar
+        Ubicación
+        Hover
+        Active-Cambio de BackGround
+      Header
+      Categories Preview
+    CATEGORY/SEARCH RESULTS PAGE DESKTOP
+    Mobile:
+      Menù Hamburguesa
+      Media Queries para ajuste de los elementos en el Desktop
+        Menù de Categorías
+        Home (mainContainer)
+        Catgories/Search Results Page
+  JS: Por definir
+
 CONSIGNA
 Trabajo Práctico JS - DOM
 Generar una página según el modelo del mockup, tanto mobile, como desktop (ejemplo real: https://ada-trabajo-practico-3-ahewymdcrw.now.sh/).
@@ -202,30 +233,5 @@ REQUERIMIENTOS
   font-family: 'Roboto', sans-serif;
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&amp;subset=cyrillic" rel="stylesheet">
 
-ACTIVIDADES A REALIZAR:
-  DEFINICIÒN DE CONVENCIONES:
-    camelCase: para variables, clases, id's, etc.
-    archivos graficos de logos e iconos, en svg
-    fuente: link como en Requerimientos
- 
-  MAQUETACIONES:
-    HOME DESKTOP
-      SearchBar
-        Diseño
-        Sticky
-      Logo
-      Category Bar
-        Ubicación
-        Hover
-        Active-Cambio de BackGround
-      Header
-      Categories Preview
-    CATEGORY/SEARCH RESULTS PAGE DESKTOP
-    Mobile:
-      Menù Hamburguesa
-      Media Queries para ajuste de los elementos en el Desktop
-        Menù de Categorías
-        Home (mainContainer)
-        Catgories/Search Results Page
-  JS: Por definir
+
   
